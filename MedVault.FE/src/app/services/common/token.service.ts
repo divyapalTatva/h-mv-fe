@@ -60,4 +60,8 @@ export class TokenService {
     const roleValue = this.getDecodedToken()?.role || 0;
     return Number(roleValue);
   }
+
+  isLoggedIn(): boolean {
+    return !!this.getAccessToken();
+  }
 }
