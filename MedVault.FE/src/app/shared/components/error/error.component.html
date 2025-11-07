@@ -1,0 +1,5 @@
+@if (control?.touched || control?.dirty) {
+  <mat-error>{{
+    validationService.getValidationMessage(control.errors, customMessageList)
+  }}</mat-error>
+}

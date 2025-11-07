@@ -1,0 +1,17 @@
+<mat-form-field
+  appearance="outline"
+  class="custom-input"
+  [class.readonly]="config.readonly"
+  floatLabel="never"
+>
+  <mat-label>{{ config.label }}</mat-label>
+  <input
+    matInput
+    [formControl]="control"
+    [type]="config.type"
+    [placeholder]="config.placeholder"
+    [readonly]="config.readonly"
+    (input)="onInputChange($event)"
+  />
+  <mat-icon *ngIf="config.icon" matSuffix (click)="onIconClick($event)">{{ config.icon }}</mat-icon>
+</mat-form-field>

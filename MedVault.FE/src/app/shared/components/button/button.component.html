@@ -1,0 +1,23 @@
+<button
+  mat-button
+  [ngClass]="{
+    'btn-filled': variant === ButtonVariant.Filled,
+    'btn-outlined': variant === ButtonVariant.Outlined,
+    'btn-outlined-sm': variant === ButtonVariant.Outlined_sm,
+  }"
+  [ngClass]="customClass"
+  [ngStyle]="customStyles"
+  [disabled]="disabled"
+  (click)="handleClick($event)"
+>
+  @if (icon) {
+    @if (isImageIconUsed) {
+      <img [src]="icon" [alt]="label || 'icon'" />
+    } @else {
+      <mat-icon [inline]="true">{{ icon }}</mat-icon>
+    }
+  }
+  @if (label) {
+    <span>{{ label }}</span>
+  }
+</button>

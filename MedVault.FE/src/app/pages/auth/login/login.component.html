@@ -1,0 +1,50 @@
+<div class="login-wrapper">
+    <div class="login-header">
+    </div>
+
+    <div class="login-box-outer">
+        <div class="login-box">
+            <div *ngIf="!showOtpScreen">
+                <div class="welcome-text">
+                    <h2 class="title">Welcome</h2>
+                    <p class="description">Sign in to your account to continue</p>
+                </div>
+                <div class="row">
+                    <form [formGroup]="form" (ngSubmit)="login()">
+                        <div class="col-12">
+                            <div class="input-wrapper">
+                                <app-input [config]="emailInputConfig" [control]="emailControl"></app-input>
+                                <app-error [control]="emailControl"
+                                    [customMessageList]="emailValidationMessages"></app-error>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-wrapper">
+                                <app-input [config]="passwordInputConfig" [control]="passwordControl"
+                                    (emitClickEvent)="onPasswordToggle()"></app-input>
+                                <app-error [control]="passwordControl"
+                                    [customMessageList]="passwordValidationMessages"></app-error>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <app-button label="Login" variant="filled" [backgroundColor]="'#2d61ac'"
+                                [textColor]="'#ffffff'" type="submit" [disabled]="form.invalid"></app-button>
+                        </div>
+                    </form>
+                    <div class="col-12 mt-5">
+                        Don't have an account?
+                        <app-link-button label="Register Now!" [textColor]="'#4875b7'"
+                            (buttonClickEvent)="navigateToRegister()"></app-link-button>
+                    </div>
+                </div>
+            </div>
+            <!-- OTP Verification -->
+            <app-verify-otp *ngIf="showOtpScreen" [userID]="otpUserId" [userRole]="userRole"
+                (otpVerified)="onOtpVerified($event)">
+            </app-verify-otp>
+        </div>
+    </div>
+    <div class="login-footer">
+        <p>&copy; MedVault</p>
+    </div>
+</div>

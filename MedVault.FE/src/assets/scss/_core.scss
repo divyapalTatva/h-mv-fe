@@ -1,0 +1,74 @@
+@use 'utils/variable';
+@use 'reset';
+@use 'grid';
+@use 'utils/material-theme';
+
+// Spacing CSS goes here
+.text-left {
+  text-align: left !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.text-right {
+  text-align: right !important;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-grow1 {
+  flex-grow: 1 !important;
+}
+.flex-shrink0 {
+  flex-shrink: 0 !important;
+}
+.text-nowrap {
+  white-space: nowrap;
+}
+.w-100 {
+  width: 100% !important;
+}
+.mb-4p {
+  margin-bottom: 4px !important;
+}
+.mt-n1 {
+  margin-top: -10px;
+}
+.mb-15p {
+  margin-bottom: 15px;
+}
+.overflow-hidden {
+  overflow: hidden !important;
+}
+.mb-24p {
+  margin-bottom: 24px !important;
+}
+.pb-12p {
+  padding-bottom: 12px !important;
+}
+.ml-4p {
+  margin-left: 4px !important;
+}
+.mt-6p {
+  margin-top: 6px !important;
+}
+@media (min-width: 1200px) {
+  .flex-xl-nowrap {
+    flex-wrap: nowrap !important;
+  }
+  .w-xl-100 {
+    width: 100%;
+  }
+  .container-xl-900 {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 992px) {
+  .flex-lg-nowrap {
+    flex-wrap: nowrap !important;
+  }
+  .w-lg-100 {
+    width: 100%;
+  }
+}
