@@ -1,0 +1,172 @@
+.dashboard-container {
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  min-height: 100vh;
+
+  .section-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 2rem;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .summary-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    transition: all 0.25s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+
+      mat-icon {
+        font-size: 30px;
+        color: #fff;
+      }
+
+      &.user {
+        background: linear-gradient(135deg, #ef4444, #f87171);
+      }
+
+      &.record {
+        background: linear-gradient(135deg, #2563eb, #3b82f6);
+      }
+
+      &.reminder {
+        background: linear-gradient(135deg, #16a34a, #22c55e);
+      }
+
+      &.checkup {
+        background: linear-gradient(135deg, #9333ea, #a855f7);
+      }
+
+      &.hospital {
+        background: linear-gradient(135deg, #f59e0b, #fbbf24);
+      }
+    }
+
+    .card-details {
+      flex: 1;
+
+      h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #334155;
+        margin-bottom: 0.25rem;
+      }
+
+      .card-value {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #0f172a;
+      }
+
+      .card-subtext {
+        font-size: 0.9rem;
+        color: #64748b;
+        margin-top: 0.25rem;
+      }
+    }
+  }
+
+  .wide-card {
+    grid-column: span 2;
+  }
+
+  /* Reminder Table Styling */
+  .reminder-section {
+    margin-top: 2.5rem;
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    .reminder-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+
+      mat-icon {
+        font-size: 26px;
+        color: #16a34a;
+      }
+
+      .reminder-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #1e293b;
+        margin: 0;
+      }
+    }
+
+    .reminder-table {
+      width: 100%;
+      border-collapse: collapse;
+
+      thead {
+        background-color: #f1f5f9;
+
+        th {
+          text-align: left;
+          padding: 0.75rem;
+          font-weight: 600;
+          color: #334155;
+          font-size: 0.9rem;
+        }
+      }
+
+      tbody tr {
+        border-bottom: 1px solid #e2e8f0;
+
+        &:hover {
+          background: #f9fafb;
+        }
+
+        td {
+          padding: 0.75rem;
+          color: #0f172a;
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .no-reminder {
+      margin-top: 2rem;
+      text-align: center;
+      color: #64748b;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+
+      mat-icon {
+        font-size: 40px;
+        color: #94a3b8;
+      }
+    }
+  }
+
+}

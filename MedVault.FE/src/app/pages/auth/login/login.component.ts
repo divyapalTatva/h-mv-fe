@@ -42,7 +42,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   private readonly destroy$ = new Subject<void>();
 
   readonly form: FormGroup;
-  userRole: UserRole;
+  public role!: UserRole;
+  UserRole = UserRole;
   showOtpScreen = false;
   otpUserId = '';
 
@@ -77,7 +78,17 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.userRole = this.route.snapshot.data['userRole'] ?? UserRole.User;
+    this.role = this.route.snapshot.data['userRole'] ?? UserRole.User;
+
+    if (this.tokenService.isLoggedIn()) {
+      let role = this.tokenService.getUserRoleFromToken();
+      let isProfileFilled = this.tokenService.isProfileFilled();
+      if (role === UserRole.User) {
+        this.router.navigate([isProfileFilled ? Navigation.User : Navigation.PatientProfile]);
+      } else if (role === UserRole.Doctor) {
+        this.router.navigate([isProfileFilled ? Navigation.Doctor : Navigation.DoctorProfile]);
+      }
+    }
   }
 
   ngOnDestroy(): void {
@@ -118,7 +129,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
 
     const { email, password } = this.form.value;
-    const loginRequest: LoginRequest = { email, password, role: this.userRole };
+    const loginRequest: LoginRequest = { email, password, role: this.role };
 
     this.authService
       .login(loginRequest)
@@ -138,6 +149,14 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   navigateToRegister() {
     this.router.navigate([Navigation.Register]);
+  }
+
+  navigateToPatientLogin() {
+    this.router.navigate([Navigation.Login]);
+  }
+
+  navigateToDoctorLogin() {
+    this.router.navigate([`${Navigation.Doctor}/${Navigation.Login}`]);
   }
 
   onOtpVerified(data: LoginResponse) {

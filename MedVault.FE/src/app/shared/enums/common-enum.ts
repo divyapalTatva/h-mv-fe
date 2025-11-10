@@ -23,13 +23,19 @@ export enum BloodGroup {
     ABNegative = 8
 }
 
+export enum ReminderType {
+    LabTest = 1,
+    Appointment = 2,
+    Medicine = 3
+}
+
 export const BLOOD_GROUP_LABELS: Record<BloodGroup, string> = {
-  [BloodGroup.APositive]: 'A+',
-  [BloodGroup.ANegative]: 'A-',
-  [BloodGroup.BPositive]: 'B+',
-  [BloodGroup.BNegative]: 'B-',
-  [BloodGroup.OPositive]: 'O+',
-  [BloodGroup.ONegative]: 'O-',
-  [BloodGroup.ABPositive]: 'AB+',
-  [BloodGroup.ABNegative]: 'AB-',
+    [BloodGroup.APositive]: 'A+',
+    [BloodGroup.ANegative]: 'A-',
+    [BloodGroup.BPositive]: 'B+',
+    [BloodGroup.BNegative]: 'B-',
+    [BloodGroup.OPositive]: 'O+',
+    [BloodGroup.ONegative]: 'O-',
+    [BloodGroup.ABPositive]: 'AB+',
+    [BloodGroup.ABNegative]: 'AB-',
 };

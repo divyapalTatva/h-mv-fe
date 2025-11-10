@@ -18,5 +18,8 @@ export const API_ENDPOINTS = {
     DoctorProfile: {
         addDoctorProfile: '/doctorprofile/add', //POST
         updateDoctorProfile: '/doctorprofile/update', //PUT
-    }
+    },
+    Dashboard: {
+        getDashboardSummary: '/dashboard/get-dashboard-summary', //Get
+    },
 }

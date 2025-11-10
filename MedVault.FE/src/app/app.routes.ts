@@ -42,6 +42,11 @@ const doctorRoutes: Routes = [
         redirectTo: Navigation.Dashboard,
         pathMatch: 'full',
       },
+      {
+        path: Navigation.Dashboard,
+        loadComponent: () =>
+          import('./pages/user/dashboard/dashboard.component').then((m) => m.DashboardComponent),
+      },
       // more admin routes
     ],
   },
@@ -58,6 +63,11 @@ const userRoutes: Routes = [
         path: '',
         redirectTo: Navigation.Dashboard,
         pathMatch: 'full',
+      },
+      {
+        path: Navigation.Dashboard,
+        loadComponent: () =>
+          import('./pages/user/dashboard/dashboard.component').then((m) => m.DashboardComponent),
       },
       {
         path: Navigation.EmergencyCard,

@@ -3,11 +3,12 @@ import { EmergencyResponse } from '../../../interfaces/response/emergencyrespons
 import { UserService } from '../../../services/user/user.service';
 import { SnackbarService } from '../../../shared/services/snackbar/snackbar.service';
 import { Subject, takeUntil } from 'rxjs';
-import { BLOOD_GROUP_LABELS, BloodGroup, UserRole } from '../../../shared/enums/common-enum';
+import { BLOOD_GROUP_LABELS, BloodGroup } from '../../../shared/enums/common-enum';
+import { SharedMaterialModule } from '../../../shared/shared-material-module';
 
 @Component({
   selector: 'app-emergency-card',
-  imports: [],
+  imports: [SharedMaterialModule,],
   templateUrl: './emergency-card.component.html',
   styleUrl: './emergency-card.component.scss'
 })

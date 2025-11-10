@@ -1,1 +1,104 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+  <!-- USER DASHBOARD -->
+  <ng-container *ngIf="role === UserRole.User">
+    <h2 class="section-title">User Dashboard</h2>
+
+    <div class="card-grid">
+      <!-- Total Records -->
+      <mat-card class="summary-card">
+        <div class="card-icon user">
+          <mat-icon>folder_open</mat-icon>
+        </div>
+        <div class="card-details">
+          <h3>Total Records</h3>
+          <p class="card-value">{{ summaryData.totalRecords || 0 }}</p>
+        </div>
+      </mat-card>
+
+      <!-- Last Record -->
+      <mat-card class="summary-card">
+        <div class="card-icon record">
+          <mat-icon>insert_drive_file</mat-icon>
+        </div>
+        <div class="card-details">
+          <h3>Last Record</h3>
+          <p class="card-value">
+            {{ summaryData.lastRecord?.date | date: 'mediumDate' || 'N/A' }}
+          </p>
+          <p class="card-subtext">
+            Documents: {{ summaryData.lastRecord?.documentCount || 0 }}
+          </p>
+        </div>
+      </mat-card>
+    </div>
+
+    <!-- Upcoming Reminders Table -->
+    <div class="reminder-section">
+      <div class="reminder-header">
+        <mat-icon>notifications_active</mat-icon>
+        <h3 class="reminder-title">Upcoming Reminders</h3>
+      </div>
+
+      <div class="reminder-table-container" *ngIf="summaryData.upcomingReminders?.length">
+        <table class="reminder-table">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Description</th>
+              <th>Reminder Date & Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let reminder of summaryData.upcomingReminders">
+              <td>{{ getReminderTypeLabel(reminder.typeId) }}</td>
+              <td>{{ reminder.description || '—' }}</td>
+              <td>{{ reminder.reminderDateTime | date: 'medium' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div *ngIf="!summaryData.upcomingReminders?.length" class="no-reminder">
+        <mat-icon>event_busy</mat-icon>
+        <p>No upcoming reminders.</p>
+      </div>
+    </div>
+
+  </ng-container>
+
+  <!-- DOCTOR DASHBOARD -->
+  <ng-container *ngIf="role === UserRole.Doctor">
+    <h2 class="section-title">Doctor Dashboard</h2>
+
+    <div class="card-grid">
+      <mat-card class="summary-card">
+        <div class="card-icon checkup">
+          <mat-icon>local_hospital</mat-icon>
+        </div>
+        <div class="card-details">
+          <h3>Total Patient Checkups</h3>
+          <p class="card-value">{{ summaryData.totalCheckups || 0 }}</p>
+        </div>
+      </mat-card>
+
+      <mat-card class="summary-card wide-card">
+        <div class="card-icon hospital">
+          <mat-icon>location_city</mat-icon>
+        </div>
+        <div class="card-details">
+          <h3>Hospital Details</h3>
+          <p class="card-subtext">
+            <strong>Name:</strong> {{ summaryData.hospital?.name || 'N/A' }}
+          </p>
+          <p class="card-subtext">
+            <strong>Contact:</strong>
+            {{ summaryData.hospital?.contactNumber || 'N/A' }}
+          </p>
+          <p class="card-subtext">
+            <strong>Address:</strong> {{ summaryData.hospital?.address || 'N/A' }}
+          </p>
+        </div>
+      </mat-card>
+    </div>
+  </ng-container>
+</div>

@@ -31,10 +31,27 @@
                                 [textColor]="'#ffffff'" type="submit" [disabled]="form.invalid"></app-button>
                         </div>
                     </form>
-                    <div class="col-12 mt-5">
-                        Don't have an account?
-                        <app-link-button label="Register Now!" [textColor]="'#4875b7'"
-                            (buttonClickEvent)="navigateToRegister()"></app-link-button>
+                    <div class="col-12 mt-5 login-links">
+                        <p>
+                            Don't have an account?
+                            <app-link-button label="Register Now!" [textColor]="'#4875b7'"
+                                (buttonClickEvent)="navigateToRegister()">
+                            </app-link-button>
+                        </p>
+
+                        <p *ngIf="role === UserRole.User">
+                            If you want to login as doctor?
+                            <app-link-button label="Login as Doctor!" [textColor]="'#4875b7'"
+                                (buttonClickEvent)="navigateToDoctorLogin()">
+                            </app-link-button>
+                        </p>
+
+                        <p *ngIf="role === UserRole.Doctor">
+                            If you want to login as patient?
+                            <app-link-button label="Login as Patient!" [textColor]="'#4875b7'"
+                                (buttonClickEvent)="navigateToPatientLogin()">
+                            </app-link-button>
+                        </p>
                     </div>
                 </div>
             </div>

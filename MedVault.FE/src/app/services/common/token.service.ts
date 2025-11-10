@@ -40,11 +40,16 @@ export class TokenService {
 
   logout() {
     const role = this.getUserRoleFromToken();
-    localStorage.removeItem(this.accessTokenKey);
-    if (role === UserRole.User) {
-      this.router.navigate([Navigation.Login]);
-    } else if (role === UserRole.Doctor) {
-      this.router.navigate([Navigation.Doctor, Navigation.Login]);
+    if (role) {
+      localStorage.removeItem(this.accessTokenKey);
+      if (role === UserRole.User) {
+        this.router.navigate([Navigation.Login]);
+      } else if (role === UserRole.Doctor) {
+        this.router.navigate([Navigation.Doctor, Navigation.Login]);
+      }
+    }
+    else{
+       this.router.navigate([Navigation.Login]);
     }
   }
 
