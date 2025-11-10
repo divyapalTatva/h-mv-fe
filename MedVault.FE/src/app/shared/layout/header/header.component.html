@@ -1,0 +1,50 @@
+<header>
+  <mat-toolbar color="primary">
+    <div class="header-left">
+      <a class="logo">
+        <img src="../../../../../public/favicon.ico" alt="MedVault" />
+      </a>
+
+      <!-- need to show/hide this button for role of Admin/Candidate -->
+      <button
+        mat-icon-button
+        class="btn-menu"
+        (click)="toggleSidebar()"
+        matTooltip="Menu">
+        <mat-icon>
+          <img src="../../../../assets/images/hamburg-white.svg" alt="Menu" />
+        </mat-icon>
+      </button>
+    </div>
+
+    <div class="header-right" *ngIf="isAuthenticated">
+      <ul class="top-actions">
+        <li>
+          <button class="btn-user-profile" mat-icon-button [matMenuTriggerFor]="ProfileMenu">
+            <p class="text-block">
+              {{ username }}
+              <span class="username">{{ userRoleName }}</span>
+            </p>
+            <mat-icon class="arrow">
+              <img src="../../../../assets/images/chevron-down-white.svg" alt="Chevron" />
+            </mat-icon>
+          </button>
+          <mat-menu #ProfileMenu="matMenu" class="profile-menu" xPosition="before">
+            <button mat-menu-item>
+              <mat-icon>
+                <img src="../../../../assets/images/candidates-grey.svg" alt="My Profile" />
+              </mat-icon>
+              <span>My Profile</span>
+            </button>
+            <button mat-menu-item (click)="logout()">
+              <mat-icon>
+                <img src="../../../../assets/images/logout-grey.svg" alt="Logout" />
+              </mat-icon>
+              <span>Logout</span>
+            </button>
+          </mat-menu>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar>
+</header>

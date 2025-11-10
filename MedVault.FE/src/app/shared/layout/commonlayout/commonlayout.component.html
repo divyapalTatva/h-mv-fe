@@ -1,0 +1,22 @@
+<div class="wrapper">
+  <mat-sidenav-container class="layout-sidenav-container">
+    <mat-sidenav
+      #drawer
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="isSidebarOpen && (isHandset$ | async) === false"
+    >
+      <app-sidebar [isSidebarOpen]="isSidebarOpen"></app-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <app-header
+        [isHandset]="isHandset$ | async"
+        (menuIconClickEvent)="drawer.toggle()"
+      ></app-header>
+
+      <main class="main-content">
+        <router-outlet> </router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

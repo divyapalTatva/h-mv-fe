@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { LoginResponse } from '../../interfaces/response/loginresponse';
 import { Router } from '@angular/router';
 import { UserRole } from '../../shared/enums/common-enum';
+import { Navigation } from '../../shared/enums/navigation.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +39,13 @@ export class TokenService {
   }
 
   logout() {
+    const role = this.getUserRoleFromToken();
     localStorage.removeItem(this.accessTokenKey);
+    if (role === UserRole.User) {
+      this.router.navigate([Navigation.Login]);
+    } else if (role === UserRole.Doctor) {
+      this.router.navigate([Navigation.Doctor, Navigation.Login]);
+    }
   }
 
   isTokenExpired(): boolean {
@@ -53,7 +60,8 @@ export class TokenService {
   }
 
   isProfileFilled(): boolean {
-    return this.getDecodedToken()?.ipf;
+    const value = this.getDecodedToken()?.ipf;
+    return value === true || value === 'true';
   }
 
   getUserRoleFromToken(): UserRole | null {
@@ -63,5 +71,13 @@ export class TokenService {
 
   isLoggedIn(): boolean {
     return !!this.getAccessToken();
+  }
+
+  getUserNameFromToken(): string {
+    const decodedToken = this.getDecodedToken();
+    const firstName = decodedToken?.unique_name || '';
+    const lastName = decodedToken?.family_name || '';
+
+    return `${firstName} ${lastName}`.trim();
   }
 }

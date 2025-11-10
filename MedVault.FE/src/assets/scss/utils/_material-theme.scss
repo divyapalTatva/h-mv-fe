@@ -22,8 +22,7 @@ $primary: (
   700: #1b3a67,
   800: #122745,
   900: #091322,
-  contrast: (
-    50: #000000,
+  contrast: (50: #000000,
     100: #000000,
     200: #091322,
     300: #091322,
@@ -47,8 +46,7 @@ $accent: (
   700: #915914,
   800: #603c0d,
   900: #301e07,
-  contrast: (
-    50: #000000,
+  contrast: (50: #000000,
     100: #000000,
     200: #180f03,
     300: #180f03,
@@ -72,8 +70,7 @@ $red-palette: (
   700: #740d0d,
   800: #4e0909,
   900: #270404,
-  contrast: (
-    50: #000000,
+  contrast: (50: #000000,
     100: #000000,
     200: #130202,
     300: #130202,
@@ -97,15 +94,11 @@ $MedVault-warn: mat.m2-define-palette($red-palette, 500);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$MedVault-theme: mat.m2-define-light-theme(
-  (
-    color: (
-      primary: $MedVault-primary,
-      accent: $MedVault-accent,
-      warn: $MedVault-warn,
-    ),
-  )
-);
+$MedVault-theme: mat.m2-define-light-theme((color: (primary: $MedVault-primary,
+        accent: $MedVault-accent,
+        warn: $MedVault-warn,
+      ),
+    ));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -155,21 +148,25 @@ $color676D79: #676d79;
 
 // Mat Button Primary
 .mdc-button.mat-primary.mat-mdc-unelevated-button {
+
   &:hover,
   &:focus,
   &:active {
     background-color: $primary500;
   }
 }
+
 .mdc-button.mat-primary.mdc-button--outlined {
   border-color: $primary500;
   background-color: transparent;
+
   &:hover,
   &:focus,
   &:active {
     background-color: rgba(76, 93, 222, 0.07);
   }
 }
+
 .mdc-button--outlined.mat-unthemed {
   &:not(:disabled) {
     border-color: #b8bfcb;
@@ -180,9 +177,11 @@ $color676D79: #676d79;
 // Mat FormField
 .mat-mdc-form-field {
   width: 100%;
+
   &.mat-form-field-appearance-outline {
     .mat-mdc-text-field-wrapper {
       background: $white;
+
       &.mdc-text-field--outlined {
         --mdc-outlined-text-field-outline-width: 1px;
         --mdc-outlined-text-field-focus-outline-width: 1px;
@@ -204,33 +203,21 @@ $color676D79: #676d79;
         font-family: 'Poppins', sans-serif;
       }
 
-      &:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover
-        .mdc-notched-outline
-        .mdc-notched-outline__leading,
-      &:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover
-        .mdc-notched-outline
-        .mdc-notched-outline__notch,
-      &:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover
-        .mdc-notched-outline
-        .mdc-notched-outline__trailing,
-      &:not(.mdc-text-field--disabled).mdc-text-field--focused
-        .mdc-notched-outline
-        .mdc-notched-outline__leading,
-      &:not(.mdc-text-field--disabled).mdc-text-field--focused
-        .mdc-notched-outline
-        .mdc-notched-outline__notch,
-      &:not(.mdc-text-field--disabled).mdc-text-field--focused
-        .mdc-notched-outline
-        .mdc-notched-outline__trailing {
+      &:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__leading,
+      &:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__notch,
+      &:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__trailing,
+      &:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline .mdc-notched-outline__leading,
+      &:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline .mdc-notched-outline__notch,
+      &:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline .mdc-notched-outline__trailing {
         border-color: $primary500;
       }
 
       &.mdc-text-field--outlined {
         .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
           color: $color676D79 !important;
-          --mat-mdc-form-field-label-transform: translateY(-28px)
-            scale(var(--mat-mdc-form-field-floating-label-scale, 0.75));
+          --mat-mdc-form-field-label-transform: translateY(-28px) scale(var(--mat-mdc-form-field-floating-label-scale, 0.75));
         }
+
         &:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-floating-label,
         &:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-floating-label--float-above {
           color: $primary500 !important;
@@ -245,8 +232,10 @@ $color676D79: #676d79;
 
           .mat-mdc-chip-set {
             margin: 0;
+
             &.mat-mdc-chip-set[tabindex='0'] {
               margin: -7px 0;
+
               .mdc-evolution-chip-set__chips {
                 .mat-mdc-chip-input.mdc-text-field__input {
                   &::placeholder {
@@ -255,20 +244,25 @@ $color676D79: #676d79;
                 }
               }
             }
+
             .mdc-evolution-chip-set__chips {
               display: inline-flex;
               align-items: center;
               margin-left: 0;
+
               .mat-mdc-chip.mat-mdc-standard-chip {
                 background: #e8ebef;
                 margin: 4px 4px 4px -2px;
+
                 &:hover {
                   .mat-mdc-chip-focus-overlay {
                     opacity: 0;
                   }
                 }
+
                 .mdc-evolution-chip__cell--primary {
                   padding-left: 6px;
+
                   .mat-mdc-chip-action-label {
                     font-size: 12px;
                     line-height: 26px;
@@ -276,12 +270,15 @@ $color676D79: #676d79;
                     color: $color51545F;
                   }
                 }
+
                 .mdc-evolution-chip__cell--trailing {
                   padding: 0 6px;
+
                   .mat-mdc-chip-remove {
                     padding-left: 0;
                     padding-right: 0;
                     opacity: 1;
+
                     &:hover {
                       opacity: 0.8;
                     }
@@ -291,6 +288,7 @@ $color676D79: #676d79;
             }
           }
         }
+
         .mdc-notched-outline {
           .mat-mdc-floating-label {
             top: 21px;
@@ -302,6 +300,7 @@ $color676D79: #676d79;
             font-family: 'Poppins', sans-serif;
           }
         }
+
         .mat-mdc-form-field-input-control {
           font-size: 14px;
           line-height: 20px;
@@ -313,41 +312,50 @@ $color676D79: #676d79;
           letter-spacing: 0;
           font-family: 'Poppins', sans-serif;
         }
+
         textarea.mat-mdc-form-field-input-control {
           height: auto;
           resize: initial;
         }
+
         .mat-mdc-form-field-icon-suffix {
           .material-icons {
             padding: 9px;
           }
+
           .mat-mdc-icon-button.mat-mdc-button-base {
             --mdc-icon-button-state-layer-size: 44;
             padding: 10px;
           }
         }
+
         .mat-mdc-form-field-icon-prefix {
           padding-right: 0;
+
           .material-icons {
             padding: 9px;
           }
+
           .mat-mdc-icon-button.mat-mdc-button-base {
             --mdc-icon-button-state-layer-size: 44;
             padding: 10px;
           }
         }
       }
+
       &.mdc-text-field--disabled {
         border-color: #b8b8b8;
         background: rgba($color: $black, $alpha: 0.07);
       }
     }
   }
+
   &.mat-mdc-form-field-has-icon-prefix {
     .mat-mdc-text-field-wrapper {
       padding-left: 0;
     }
   }
+
   .mat-mdc-form-field-subscript-wrapper {
     font-size: 13px;
     line-height: 16px;
@@ -359,26 +367,25 @@ $color676D79: #676d79;
 // Mat Checkbox
 .mat-mdc-checkbox {
   margin-left: -9px;
+
   .mdc-checkbox {
     flex: 0 0 20px;
     width: 20px;
     height: 20px;
+
     .mdc-checkbox__background {
       border: 1px solid;
       width: 20px;
       height: 20px;
       border-radius: 3px;
+
       .mdc-checkbox__mixedmark {
         width: 10px;
       }
     }
-    &:hover
-      .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not(
-        [data-indeterminate='true']
-      )
-      ~ .mdc-checkbox__background,
-    .mdc-checkbox__native-control:enabled:focus:focus:not(:checked):not(:indeterminate)
-      ~ .mdc-checkbox__background {
+
+    &:hover .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate='true'])~.mdc-checkbox__background,
+    .mdc-checkbox__native-control:enabled:focus:focus:not(:checked):not(:indeterminate)~.mdc-checkbox__background {
       border-color: $primary500;
     }
 
@@ -389,26 +396,20 @@ $color676D79: #676d79;
       left: 0;
     }
 
-    .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not(
-        [data-indeterminate='true']
-      )
-      ~ .mdc-checkbox__background {
+    .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate='true'])~.mdc-checkbox__background {
       border-color: #b8bfcb;
     }
 
-    .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background .mdc-checkbox__checkmark {
+    .mdc-checkbox__native-control:enabled~.mdc-checkbox__background .mdc-checkbox__checkmark {
       background: url('./../../images/check-white.svg') no-repeat center center;
       background-size: 20px 20px;
     }
 
-    .mdc-checkbox__native-control:enabled
-      ~ .mdc-checkbox__background
-      .mdc-checkbox__checkmark
-      .mdc-checkbox__checkmark-path {
+    .mdc-checkbox__native-control:enabled~.mdc-checkbox__background .mdc-checkbox__checkmark .mdc-checkbox__checkmark-path {
       display: none;
     }
 
-    + .mdc-label {
+    +.mdc-label {
       font-family: 'Poppins', sans-serif;
       font-size: 14px;
       font-weight: 400;
@@ -427,25 +428,31 @@ $color676D79: #676d79;
   margin-left: -8px;
   display: inline-block;
   cursor: pointer;
+
   .mdc-form-field {
     cursor: pointer;
+
     .mdc-radio {
       width: 18px;
       height: 18px;
       --mdc-radio-state-layer-size: 34px;
+
       .mdc-radio__background {
         width: 18px;
         height: 18px;
+
         &::before {
           top: calc(-1 * (var(--mdc-radio-state-layer-size) - 18px) / 2);
           left: calc(-1 * (var(--mdc-radio-state-layer-size) - 18px) / 2);
           width: var(--mdc-radio-state-layer-size - 2px);
           height: var(--mdc-radio-state-layer-size - 2px);
         }
+
         .mdc-radio__outer-circle {
           border-width: 1px;
           border-color: #b8bfcb;
         }
+
         .mdc-radio__inner-circle {
           width: 12px;
           height: 12px;
@@ -454,9 +461,8 @@ $color676D79: #676d79;
           left: -3px;
         }
       }
-      .mdc-radio__native-control:enabled:not(:checked)
-        + .mdc-radio__background
-        .mdc-radio__outer-circle {
+
+      .mdc-radio__native-control:enabled:not(:checked)+.mdc-radio__background .mdc-radio__outer-circle {
         border-width: 1px;
         border-color: #b8bfcb;
       }
@@ -470,7 +476,7 @@ $color676D79: #676d79;
         height: 34px;
       }
 
-      + .mdc-label {
+      +.mdc-label {
         font-family: 'Poppins', sans-serif;
         font-size: 14px;
         line-height: 20px;
@@ -486,21 +492,15 @@ $color676D79: #676d79;
         background-color: rgba($color: $black, $alpha: 0.07);
       }
 
-      &:hover
-        .mdc-radio__native-control:enabled:not(:checked)
-        + .mdc-radio__background
-        .mdc-radio__outer-circle,
-      .mdc-radio__native-control:enabled + .mdc-radio__background .mdc-radio__inner-circle,
-      .mdc-radio__native-control:enabled:checked + .mdc-radio__background .mdc-radio__outer-circle,
-      .mat-mdc-radio-button
-        .mdc-radio:not(.mdc-ripple-upgraded):focus
-        .mdc-radio__native-control:enabled:checked
-        + .mdc-radio__background
-        .mdc-radio__outer-circle {
+      &:hover .mdc-radio__native-control:enabled:not(:checked)+.mdc-radio__background .mdc-radio__outer-circle,
+      .mdc-radio__native-control:enabled+.mdc-radio__background .mdc-radio__inner-circle,
+      .mdc-radio__native-control:enabled:checked+.mdc-radio__background .mdc-radio__outer-circle,
+      .mat-mdc-radio-button .mdc-radio:not(.mdc-ripple-upgraded):focus .mdc-radio__native-control:enabled:checked+.mdc-radio__background .mdc-radio__outer-circle {
         border-color: $primary500 !important;
       }
     }
   }
+
   &.mat-mdc-radio-checked .mdc-radio__background::before {
     background-color: $primary500 !important;
   }
@@ -511,6 +511,7 @@ $color676D79: #676d79;
   display: flex;
   align-items: center;
   justify-content: center;
+
   img {
     width: inherit;
     height: inherit;
@@ -520,6 +521,7 @@ $color676D79: #676d79;
 .mat-mdc-menu-trigger[aria-expanded='true'] {
   background: rgba($color: $black, $alpha: 0.1);
 }
+
 .mat-mdc-icon-button {
   .mat-mdc-button-persistent-ripple {
     border-radius: inherit !important;
@@ -532,15 +534,18 @@ $color676D79: #676d79;
   box-shadow: 0px 3px 10px 0px rgba($color: $black, $alpha: 0.2);
   min-width: 110px;
   background: $white;
+
   .mat-mdc-menu-content {
     .mat-mdc-menu-item {
       min-height: auto;
       padding: 8px 10px;
+
       .mat-icon {
         width: 18px;
         height: 18px;
         margin-right: 10px;
       }
+
       .mat-mdc-menu-item-text {
         font-size: 14px;
         line-height: 20px;
@@ -559,18 +564,22 @@ $color676D79: #676d79;
   width: 46px;
   height: 46px;
   overflow: hidden;
+
   .mat-icon {
     width: 20px;
     height: 20px;
   }
+
   &.mat-primary {
     background-color: $primary500;
+
     &:hover,
     &:focus {
       background-color: $primary600;
     }
   }
 }
+
 .mat-mdc-mini-fab.mdc-fab {
   --mdc-fab-container-shape: 6px;
   --mdc-fab-icon-size: 18px;
@@ -578,12 +587,15 @@ $color676D79: #676d79;
   width: 40px;
   height: 40px;
   overflow: hidden;
+
   .mat-icon {
     width: 18px;
     height: 18px;
   }
+
   &.mat-primary {
     background-color: $primary500;
+
     &:hover,
     &:focus {
       background-color: $primary600;
@@ -596,10 +608,12 @@ $color676D79: #676d79;
   box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
   background: $white;
+
   .mat-mdc-card-header {
     justify-content: space-between;
     align-items: center;
     padding: 24px 12px 0;
+
     .mat-mdc-card-title {
       font-family: 'Poppins', sans-serif;
       font-size: 20px;
@@ -609,14 +623,17 @@ $color676D79: #676d79;
       color: $color51545F;
     }
   }
+
   .mat-mdc-card-content {
     padding: 20px 12px 12px;
   }
+
   &.table-card {
     .mat-mdc-card-content {
       padding: 0;
     }
   }
+
   &.default-card {
     .mat-mdc-card-content {
       padding: 24px;
@@ -628,10 +645,13 @@ $color676D79: #676d79;
 .mat-table-wrapper {
   overflow-x: auto;
 }
+
 .mat-mdc-table.mdc-data-table__table {
   background: transparent;
+
   .mat-mdc-header-row {
     height: 46px;
+
     .mat-mdc-header-cell {
       background: transparent;
       color: $color51545F;
@@ -648,21 +668,26 @@ $color676D79: #676d79;
       font-feature-settings:
         'clig' off,
         'liga' off;
+
       &.mat-column-action {
         width: 50px;
         text-align: center;
       }
+
       &.mat-column-select {
         width: 10px;
+
         .mat-mdc-checkbox {
           margin-left: 0;
           margin-right: -10px;
         }
       }
+
       &.mat-sort-header {
         .mat-sort-header-arrow {
           color: $color51545F;
         }
+
         &.text-center {
           .mat-sort-header-container {
             justify-content: center;
@@ -671,9 +696,11 @@ $color676D79: #676d79;
       }
     }
   }
+
   .mdc-data-table__content {
     .mat-mdc-row {
       height: 52px;
+
       .mat-mdc-cell {
         font-family: 'Poppins', sans-serif;
         font-size: 14px;
@@ -683,49 +710,61 @@ $color676D79: #676d79;
         padding: 15px 10px;
         border-bottom: 1px solid #d7e0ef;
         color: $color51545F;
+
         &.green {
           color: #29aa29;
         }
+
         &.red {
           color: #c21616;
         }
+
         a.default-bold-link {
           color: inherit;
           font-size: inherit;
           line-height: inherit;
           text-decoration: none !important;
+
           &:hover,
           &:hover b {
             color: $primary500;
           }
         }
+
         b {
           color: #313131;
           display: block;
           font-weight: 500;
         }
+
         strong {
           font-weight: 600;
         }
+
         small {
           font-size: 13px;
         }
+
         .mat-mdc-chip {
           margin: -6px 0;
         }
+
         .mat-mdc-menu-trigger {
           width: 40px;
           height: 40px;
           padding: 8px;
         }
+
         &.mat-column-action {
           padding-top: 6px;
           padding-bottom: 6px;
           min-width: auto;
           text-align: center;
         }
+
         &.mat-column-select {
           width: 10px;
+
           .mat-mdc-checkbox {
             margin: -10px -10px -10px 0;
           }
@@ -734,17 +773,20 @@ $color676D79: #676d79;
     }
   }
 }
+
 .custom-pagination-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 13px 15px;
   height: 70px;
+
   .pagination-left {
     display: ruby;
     align-items: center;
     gap: 12px;
     padding-top: 25px;
+
     label {
       display: flex;
       align-items: center;
@@ -752,6 +794,7 @@ $color676D79: #676d79;
       color: #424242;
       padding-right: 9px;
     }
+
     select {
       margin: 0 6px;
       padding: 4px 8px;
@@ -760,6 +803,7 @@ $color676D79: #676d79;
       font-size: 14px;
       background: white;
     }
+
     .entry-label {
       display: inline-block;
       font-size: 14px;
@@ -768,16 +812,19 @@ $color676D79: #676d79;
       color: #51545f;
     }
   }
+
   .pagination-right {
     display: ruby;
     align-items: center;
     padding-top: 5px;
+
     .pagination-buttons {
       display: flex;
       list-style: none;
       margin: 0;
       padding: 0;
       gap: 8px;
+
       li {
         .pagination-btn {
           &:not(:disabled) {
@@ -815,6 +862,7 @@ $color676D79: #676d79;
     }
   }
 }
+
 .pagination-buttons {
   .ellipsis {
     cursor: default;
@@ -830,6 +878,7 @@ $color676D79: #676d79;
       user-select: none;
     }
   }
+
   li {
     &.ellipsis:hover {
       background: none;
@@ -842,11 +891,14 @@ $color676D79: #676d79;
   min-height: 24px;
   height: auto;
   border-radius: 50px;
+
   &:not(.mdc-evolution-chip--disabled) {
     background: transparent;
   }
+
   .mdc-evolution-chip__action {
     padding: 0 16px;
+
     .mat-mdc-chip-action-label {
       font-size: 12px;
       line-height: 24px;
@@ -855,8 +907,10 @@ $color676D79: #676d79;
     }
   }
 }
+
 .ChipSuccess.mat-mdc-chip.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) {
   background-color: #edf9ed;
+
   .mdc-evolution-chip__action {
     .mat-mdc-chip-action-label {
       color: #46a746;
@@ -866,6 +920,7 @@ $color676D79: #676d79;
 
 .ChipImported.mat-mdc-chip.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) {
   background-color: #edf9ed;
+
   .mdc-evolution-chip__action {
     .mat-mdc-chip-action-label {
       color: blue;
@@ -875,6 +930,7 @@ $color676D79: #676d79;
 
 .ChipLoggedOut.mat-mdc-chip.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) {
   background-color: #edf9ed;
+
   .mdc-evolution-chip__action {
     .mat-mdc-chip-action-label {
       color: red;
@@ -884,38 +940,47 @@ $color676D79: #676d79;
 
 .ChipDanger.mat-mdc-chip.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) {
   background-color: #edf9ed;
+
   .mdc-evolution-chip__action {
     .mat-mdc-chip-action-label {
       color: #46a746;
     }
   }
 }
+
 .ChipInactive.mat-mdc-chip.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) {
   background-color: #ececec;
+
   .mdc-evolution-chip__action {
     .mat-mdc-chip-action-label {
       color: #8b8b8b;
     }
   }
 }
+
 .ChipInfo.mat-mdc-chip.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) {
   background-color: #eaf2ff;
+
   .mdc-evolution-chip__action {
     .mat-mdc-chip-action-label {
       color: $primary500;
     }
   }
 }
+
 .ChipWarn.mat-mdc-chip.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) {
   background-color: #fff9dc;
+
   .mdc-evolution-chip__action {
     .mat-mdc-chip-action-label {
       color: #fca119;
     }
   }
 }
+
 .ChipDefault.mat-mdc-chip.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) {
   background-color: #ececec;
+
   .mdc-evolution-chip__action {
     .mat-mdc-chip-action-label {
       color: $color51545F;
@@ -928,6 +993,7 @@ $color676D79: #676d79;
   .mat-mdc-select {
     display: block;
     margin: -2px 0;
+
     .mat-mdc-select-trigger {
       .mat-mdc-select-value {
         .mat-mdc-select-value-text {
@@ -939,6 +1005,7 @@ $color676D79: #676d79;
           font-family: 'Poppins', sans-serif;
         }
       }
+
       .mat-mdc-select-arrow-wrapper {
         .mat-mdc-select-arrow {
           color: #737984;
@@ -948,12 +1015,14 @@ $color676D79: #676d79;
           background-size: 14px 14px;
           transition: all 100ms ease-in-out;
           transform: rotate(0deg);
+
           svg {
             display: none;
           }
         }
       }
     }
+
     &.mat-mdc-select[aria-expanded='true'] {
       .mat-mdc-select-trigger {
         .mat-mdc-select-arrow-wrapper {
@@ -971,6 +1040,7 @@ div.mat-mdc-select-panel {
   box-shadow: 0px 3px 10px 0px rgba($color: $black, $alpha: 0.2) !important;
   padding: 5px 0px !important;
   border-radius: 6px !important;
+
   .mat-mdc-option.mdc-list-item {
     font-feature-settings:
       'clig' off,
@@ -984,23 +1054,27 @@ div.mat-mdc-select-panel {
     color: $color51545F;
     min-height: 36px;
     padding: 8px 10px;
+
     .mat-mdc-option-pseudo-checkbox {
       display: none;
     }
+
     &:hover {
       background: #eef0f6;
     }
+
     &:focus,
     &.mat-mdc-option-active {
       background-color: transparent;
       color: $primary500;
     }
+
     &.mdc-list-item--selected:not(.mdc-list-item--disabled):not(.mat-mdc-option-multiple) {
       background-color: transparent;
       color: $primary500;
+
       .mdc-list-item__primary-text,
-      .mdc-list-item__primary-text
-        + .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-minimal::after {
+      .mdc-list-item__primary-text+.mat-pseudo-checkbox-checked.mat-pseudo-checkbox-minimal::after {
         color: #23252c;
       }
     }
@@ -1010,18 +1084,22 @@ div.mat-mdc-select-panel {
 // Mat Dialog
 .primary-dialog.cdk-overlay-pane {
   width: 556px;
+
   // max-width: 556px !important;
   .mdc-dialog {
     box-shadow: none;
+
     .mdc-dialog__container {
       .mdc-dialog__surface {
         border-radius: 6px;
+
         .dialog-header {
           display: flex;
           align-items: center;
           justify-content: space-between;
           background: #eef0f6;
           padding: 12px 8px 12px 20px;
+
           .mat-mdc-dialog-title {
             flex-grow: 1;
             color: $primary500;
@@ -1032,10 +1110,12 @@ div.mat-mdc-select-panel {
             text-transform: capitalize;
             padding: 0;
             margin-right: 16px;
+
             &::before {
               display: none;
             }
           }
+
           .dialog-close.mdc-icon-button {
             flex-shrink: 0;
             width: 36px;
@@ -1043,21 +1123,25 @@ div.mat-mdc-select-panel {
             padding: 6px;
           }
         }
+
         .mat-mdc-dialog-content.dialog-body {
           padding: 24px;
         }
+
         .mat-mdc-dialog-actions.dialog-footer {
           padding: 14px 20px;
           display: flex;
           align-items: center;
           gap: 12px;
-          .mat-mdc-button-base + .mat-mdc-button-base {
+
+          .mat-mdc-button-base+.mat-mdc-button-base {
             margin-left: 12px;
           }
         }
       }
     }
   }
+
   &.dialog-lg {
     width: 960px;
     max-width: 960px !important;
@@ -1068,25 +1152,31 @@ div.mat-mdc-select-panel {
 .confirmation-dialog.cdk-overlay-pane {
   width: 452px;
   max-width: 452px !important;
+
   .mdc-dialog {
     box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.2);
+
     .mdc-dialog__container {
       .mdc-dialog__surface {
         border-radius: 6px;
+
         .mat-mdc-dialog-content.dialog-body {
           padding: 24px 24px 10px;
           text-align: center;
+
           .confirmation-icon {
             margin: 4px auto 20px;
             width: 80px;
             height: 80px;
             background: rgba($color: $primary500, $alpha: 0.09);
             border-radius: 50%;
+
             img {
               width: 36px;
               height: 36px;
             }
           }
+
           .confirmation-message {
             font-size: 16px;
             font-style: normal;
@@ -1095,10 +1185,12 @@ div.mat-mdc-select-panel {
             color: $color51545F;
           }
         }
+
         .mat-mdc-dialog-actions.dialog-footer {
           padding: 20px;
           min-height: auto;
-          .mat-mdc-button-base + .mat-mdc-button-base {
+
+          .mat-mdc-button-base+.mat-mdc-button-base {
             margin-left: 12px;
           }
         }
@@ -1112,18 +1204,22 @@ div.mat-mdc-select-panel {
   .mat-datepicker-content {
     box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.2);
     border-radius: 6px;
+
     .mat-datepicker-content-container {
       .mat-calendar {
         height: auto;
+
         .mat-calendar-header {
           .mat-calendar-controls {
             margin: 1% calc(4.7142857143% - 16px) 5%;
+
             .mat-mdc-button:not(:disabled) {
               padding: 8px;
               color: #5a5a5a;
             }
           }
         }
+
         .mat-calendar-table {
           .mat-calendar-table-header {
             th {
@@ -1132,6 +1228,7 @@ div.mat-mdc-select-panel {
               color: $color51545F;
             }
           }
+
           .mat-calendar-body {
             .mat-calendar-body-label {
               font-size: 16px;
@@ -1139,23 +1236,22 @@ div.mat-mdc-select-panel {
               font-weight: 600;
               padding: 10px !important;
             }
+
             .mat-calendar-body-cell-container {
               .mat-calendar-body-cell {
                 .mat-calendar-body-cell-content {
                   color: #6a6a6a;
-                  &.mat-calendar-body-today:not(.mat-calendar-body-selected):not(
-                      .mat-calendar-body-comparison-identical
-                    ) {
+
+                  &.mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
                     border-color: $primary500;
                   }
+
                   &.mat-calendar-body-selected {
                     color: $white;
                   }
                 }
-                &:not(.mat-calendar-body-disabled):hover
-                  > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(
-                    .mat-calendar-body-comparison-identical
-                  ) {
+
+                &:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
                   background: #eaeaea;
                 }
               }
@@ -1171,21 +1267,25 @@ div.mat-mdc-select-panel {
 .mat-datepicker-toggle {
   .mat-mdc-icon-button {
     display: flex;
+
     .mat-datepicker-toggle-default-icon {
       path {
         display: none;
       }
+
       background: url('./../../images/datepicker-grey.svg') no-repeat center center;
       background-size: 20px 20px;
     }
   }
 }
+
 .mat-time-picker.mat-mdc-form-field {
   &.mat-form-field-appearance-outline {
     .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-form-field-icon-suffix {
       .mat-mdc-icon-button.mat-mdc-button-base {
         padding: 12px;
         margin-right: 1px;
+
         .mat-icon {
           width: 20px;
           height: 20px;
@@ -1194,6 +1294,7 @@ div.mat-mdc-select-panel {
     }
   }
 }
+
 ngx-material-timepicker-container {
   .timepicker-overlay {
     ngx-material-timepicker-content {
@@ -1202,11 +1303,14 @@ ngx-material-timepicker-container {
         overflow: hidden;
         box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.2);
         width: 320px;
+
         .timepicker__header {
           background: $primary500;
+
           .timepicker-dial__control {
             font-family: 'Poppins', sans-serif;
           }
+
           .timepicker-period {
             .timepicker-period__btn {
               padding: 3px 6px;
@@ -1216,12 +1320,15 @@ ngx-material-timepicker-container {
             }
           }
         }
+
         .timepicker__main-content {
           .timepicker__body {
             padding: 15px;
+
             ngx-material-timepicker-face {
               .clock-face {
                 background: rgba($color: $primary500, $alpha: 0.08);
+
                 .clock-face__container {
                   .clock-face__number {
                     span {
@@ -1232,21 +1339,26 @@ ngx-material-timepicker-container {
                       font-weight: 500;
                       color: $color51545F;
                       font-family: 'Poppins', sans-serif;
+
                       &.active {
                         background: $primary500;
                         color: $white;
                       }
                     }
                   }
+
                   .clock-face__number--outer {
                     height: calc(300px / 2 - 20px);
                   }
                 }
+
                 .clock-face__clock-hand {
                   background: $primary500;
+
                   &::before {
                     border-color: $primary500;
                   }
+
                   &::after {
                     width: 8px;
                     height: 8px;
@@ -1256,6 +1368,7 @@ ngx-material-timepicker-container {
               }
             }
           }
+
           .timepicker__actions {
             .timepicker-button {
               padding: 11.5px 20px;
@@ -1265,9 +1378,11 @@ ngx-material-timepicker-container {
               border: 1px solid $primary500;
               margin: 0 4px;
               line-height: 20px;
+
               &:hover {
                 background: rgba($color: $primary500, $alpha: 0.07);
               }
+
               span {
                 font-size: 16px;
                 line-height: 20px;
@@ -1278,12 +1393,15 @@ ngx-material-timepicker-container {
                 color: $primary500;
               }
             }
+
             & div:last-child {
               .timepicker-button {
                 background: $primary500;
+
                 span {
                   color: $white;
                 }
+
                 &:hover {
                   background: $primary600;
                 }
@@ -1308,39 +1426,47 @@ ngx-material-timepicker-container {
         border: 1px solid #d8dcef;
         background: #eef0f6;
         justify-content: space-between;
+
         .mat-horizontal-stepper-header {
           height: auto;
           padding: 10px 55px;
           cursor: pointer;
           border-radius: 50px;
+
           &.mat-horizontal-stepper-header[aria-selected='true'] {
             background: $primary500;
             color: $white;
           }
+
           .mat-step-icon-state-number {
             color: $white;
             background-color: $primary500;
+
             &.mat-step-icon-selected {
               background-color: $white;
               color: $primary500;
             }
           }
+
           .mat-step-label {
             color: $primary500;
             font-family: 'Poppins', sans-serif;
             font-size: 16px;
             font-weight: 500;
             line-height: 22px;
+
             &.mat-step-label-active.mat-step-label-selected {
               color: $white;
             }
           }
         }
+
         .mat-stepper-horizontal-line {
           display: none;
         }
       }
     }
+
     .mat-horizontal-content-container {
       padding: 30px 0 0;
       overflow: visible;
@@ -1352,6 +1478,7 @@ ngx-material-timepicker-container {
     align-items: center;
     justify-content: flex-end;
     flex-wrap: wrap;
+
     .mat-mdc-button-base {
       margin: 4px 0 4px 12px;
     }
@@ -1372,40 +1499,48 @@ ngx-material-timepicker-container {
       --mdc-switch-selected-hover-track-color: #aeb7be;
       --mdc-switch-unselected-track-color: #aeb7be;
       --mdc-switch-selected-track-color: #aeb7be;
+
       &.mdc-switch--selected:enabled .mdc-switch__handle::after {
         background-color: #244e8a !important;
       }
+
       .mdc-switch__track {
         &::before {
           background: #aeb7be;
         }
       }
+
       &.mdc-switch:enabled {
         &:hover:not(:focus):not(:active) .mdc-switch__track::before {
           background: #aeb7be;
         }
+
         .mdc-switch__shadow {
           box-shadow:
             0px 2px 2px rgba(0, 0, 0, 0.24),
             0px 0px 2px rgba(0, 0, 0, 0.12);
         }
       }
+
       &.mdc-switch--unselected:enabled {
+
         .mdc-switch__handle::after,
         &:hover:not(:focus):not(:active) .mdc-switch__handle::after {
           background: $white;
         }
       }
+
       &.mdc-switch.mdc-switch--selected:enabled:active {
         .mdc-switch__handle::after {
           background: $primary500;
         }
       }
-      &.mdc-switch.mdc-switch--selected:enabled:hover:not(:focus):not(:active)
-        .mdc-switch__handle::after {
+
+      &.mdc-switch.mdc-switch--selected:enabled:hover:not(:focus):not(:active) .mdc-switch__handle::after {
         background: $primary500;
       }
     }
+
     .mdc-label {
       color: $color51545F;
       font-family: 'Poppins', sans-serif;
@@ -1414,6 +1549,7 @@ ngx-material-timepicker-container {
       line-height: 20px;
       text-transform: capitalize;
     }
+
     &.mdc-form-field--align-end {
       .mdc-label {
         margin-left: 0;
@@ -1430,11 +1566,14 @@ ngx-material-timepicker-container {
     border: 1px solid #b8bfcb;
     background: $white;
     min-height: 40px;
+
     .mat-mdc-chip-action {
       padding: 0 20px;
+
       .mat-mdc-chip-graphic {
         display: none;
       }
+
       .mat-mdc-chip-action-label {
         color: rgba($color: $color51545F, $alpha: 0.5);
         font-family: 'Poppins', sans-serif;
@@ -1442,25 +1581,31 @@ ngx-material-timepicker-container {
         font-weight: 400;
         line-height: 16px;
         text-transform: capitalize;
+
         .result {
           margin-left: 5px;
           color: $color51545F;
           font-weight: 500;
           letter-spacing: 0.14px;
+
           em {
             color: #46a746;
           }
         }
       }
     }
+
     &.mdc-evolution-chip--selected {
       background: $primary500 !important;
       border-color: $primary500;
+
       .mat-mdc-chip-action {
         .mat-mdc-chip-action-label {
           color: rgba($color: $white, $alpha: 0.5);
+
           .result {
             color: $white;
+
             em {
               color: $white;
             }
@@ -1468,6 +1613,7 @@ ngx-material-timepicker-container {
         }
       }
     }
+
     &:hover {
       background: rgba(45, 97, 172, 0.08);
     }
@@ -1559,6 +1705,185 @@ ngx-material-timepicker-container {
   }
 }
 
+
+.profile-wrapper {
+  position: relative;
+  background: #ffffff;
+  padding: 40px 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background-size: 100% 100%;
+    z-index: 0;
+  }
+
+  .profile-header {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    text-align: center;
+
+    .logo img {
+      height: 50px;
+    }
+
+    .title {
+      font-size: 30px;
+      font-weight: 600;
+      color: #444;
+      margin-top: 10px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #888;
+      font-weight: 400;
+    }
+  }
+
+  .profile-box-outer {
+    margin: auto 0;
+    padding: 30px 0;
+    width: 100%;
+
+    .profile-box {
+      position: relative;
+      z-index: 1;
+      padding: 40px 45px;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 15px;
+      background: #fff;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.12);
+      text-align: center;
+
+      .welcome-text {
+        margin-bottom: 30px;
+
+        .title {
+          font-size: 32px;
+          font-weight: 600;
+          line-height: 40px;
+          letter-spacing: 0.2px;
+          color: #51545f;
+        }
+
+        .description {
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 28px;
+          letter-spacing: 0.2px;
+          color: #8d92a2;
+        }
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .section-title {
+          font-size: 20px;
+          font-weight: 600;
+          color: #333;
+          border-bottom: 1px solid #eaeaea;
+          padding-bottom: 8px;
+          margin-bottom: 12px;
+        }
+
+        .input-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+
+          .input-wrapper {
+            flex: 1 1 calc(50% - 20px);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            label {
+              font-weight: 500;
+              font-size: 14px;
+              color: #555;
+              margin-bottom: 6px;
+            }
+
+            app-input,
+            mat-form-field {
+              width: 100%;
+            }
+
+            app-error {
+              text-align: left;
+            }
+          }
+        }
+
+        .textarea-wrapper {
+          flex: 1 1 100%;
+          display: flex;
+          flex-direction: column;
+
+          textarea {
+            width: 100%;
+            min-height: 80px;
+            resize: vertical;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            color: #333;
+
+            &:focus {
+              outline: none;
+              border-color: #1976d2;
+              box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+            }
+          }
+        }
+
+        .action-buttons {
+          display: flex;
+          justify-content: flex-end;
+          margin-top: 20px;
+
+          app-button,
+          button {
+            min-width: 120px;
+          }
+
+          button+button {
+            margin-left: 12px;
+          }
+        }
+      }
+    }
+  }
+
+  .profile-footer {
+    margin-top: auto;
+    padding-bottom: 20px;
+    text-align: center;
+
+    p {
+      color: #6a6a6a;
+      font-size: 14px;
+    }
+  }
+}
+
 /* Responsive Media Queries
 -------------------------------------------------------------------------------------------------*/
 @media (max-width: 991px) {
@@ -1566,6 +1891,7 @@ ngx-material-timepicker-container {
     .mat-horizontal-stepper-wrapper {
       .mat-horizontal-stepper-header-container {
         width: auto;
+
         .mat-horizontal-stepper-header {
           padding: 10px 30px;
         }
@@ -1573,6 +1899,7 @@ ngx-material-timepicker-container {
     }
   }
 }
+
 @media (max-width: 767px) {
   .custom-pagination-container {
     .pagination-left {
@@ -1587,19 +1914,23 @@ ngx-material-timepicker-container {
   .primary-dialog.cdk-overlay-pane {
     width: 100%;
     max-width: 80vw !important;
+
     .mdc-dialog {
       .mdc-dialog__container {
         .mdc-dialog__surface {
           .dialog-header {
             padding: 8px 8px 8px 16px;
+
             .mat-mdc-dialog-title {
               font-size: 18px;
               line-height: 22px;
             }
           }
+
           .mat-mdc-dialog-content.dialog-body {
             padding: 16px 16px 0;
           }
+
           .mat-mdc-dialog-actions.dialog-footer {
             padding: 12px 16px;
           }
@@ -1624,16 +1955,21 @@ ngx-material-timepicker-container {
       .mat-horizontal-stepper-wrapper {
         .mat-horizontal-stepper-header-container {
           border: 0;
+
           .mat-horizontal-stepper-header {
             padding: 12px 16px;
+
             .mat-step-icon-state-number {
               margin-right: 0;
+
               &.mat-step-icon-selected {
                 margin-right: 8px;
               }
             }
+
             .mat-step-label {
               display: none;
+
               &.mat-step-label-selected {
                 display: block;
               }
@@ -1642,43 +1978,54 @@ ngx-material-timepicker-container {
         }
       }
     }
+
     &.mat-stepper-vertical {
       margin: -24px;
+
       .mat-step {
         .mat-vertical-stepper-header {
           height: auto;
           padding: 16px;
+
           .mat-step-icon-state-number {
             width: 30px;
             height: 30px;
             background: #838898;
+
             .mat-step-icon-content {
               font-size: 14px;
               line-height: 18px;
               font-weight: 500;
             }
+
             &.mat-step-icon-selected {
               background: $primary500;
+
               .mat-step-icon-content {
                 color: $white;
               }
             }
           }
+
           .mat-step-label {
             font-size: 16px;
             line-height: 30px;
             font-family: 'Poppins', sans-serif;
             font-weight: 500;
             color: #838898;
+
             &.mat-step-label-selected {
               color: $primary500;
             }
           }
         }
+
         .mat-vertical-content-container {
           margin-left: 30px;
+
           .mat-vertical-content {
             padding: 16px 20px 8px;
+
             .mat-table-wrapper {
               padding: 0 4px;
             }
@@ -1704,6 +2051,7 @@ ngx-material-timepicker-container {
     line-height: 24px;
   }
 }
+
 @media (max-width: 575px) {
   .login-wrapper {
     padding: 30px 20px;
@@ -1715,6 +2063,46 @@ ngx-material-timepicker-container {
 
     .welcome-text .title {
       font-size: 26px;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .profile-box {
+    padding: 30px 25px;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 767px) {
+  .profile-wrapper {
+    padding: 30px 20px;
+  }
+
+  .profile-box {
+    padding: 25px 20px;
+    max-width: 100%;
+  }
+
+  .profile-header .title {
+    font-size: 26px;
+  }
+
+  .input-row {
+    flex-direction: column;
+
+    .input-wrapper {
+      flex: 1 1 100%;
+    }
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    align-items: stretch;
+
+    button+button {
+      margin-left: 0;
+      margin-top: 10px;
     }
   }
 }

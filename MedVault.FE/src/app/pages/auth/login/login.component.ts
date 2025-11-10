@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { InputComponent, InputConfig } from "../../../shared/components/input/input.component";
 import { ValidationMessages } from '../../../shared/services/validation/validation.service';
 import { VALIDATION_MESSAGES } from '../../../utils/messages';
@@ -33,7 +33,7 @@ import { VerifyOtpComponent } from '../verify-otp/verify-otp.component';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit, OnDestroy {
   private readonly tokenService = inject(TokenService);
   private readonly authService = inject(AuthService);
   private readonly route = inject(ActivatedRoute);
@@ -152,9 +152,9 @@ export class LoginComponent {
 
     let isProfileFilled = this.tokenService.isProfileFilled();
     if (role === UserRole.User) {
-      this.router.navigate([isProfileFilled ? Navigation.Dashboard : Navigation.PatientProfile]);
+      this.router.navigate([isProfileFilled ? Navigation.User : Navigation.PatientProfile]);
     } else if (role === UserRole.Doctor) {
-      this.router.navigate([isProfileFilled ? Navigation.Dashboard : Navigation.DoctorProfile]);
+      this.router.navigate([isProfileFilled ? Navigation.Doctor : Navigation.DoctorProfile]);
     }
   }
 }

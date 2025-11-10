@@ -12,7 +12,7 @@ export function authGuard(allowedRoles: UserRole[]): CanActivateFn {
       return false;
     }
 
-    const userRole = tokenService.getUserRoleFromToken();
+    const userRole = tokenService.getUserRoleFromToken() as UserRole;
     if (!userRole || !allowedRoles.includes(userRole)) {
       tokenService.logout();
       return false;

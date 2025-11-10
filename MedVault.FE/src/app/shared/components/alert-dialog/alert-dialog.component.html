@@ -1,0 +1,27 @@
+<mat-dialog-content class="dialog-body">
+  <mat-icon class="confirmation-icon">
+    <img
+      [src]="
+        data.alertType === 'danger'
+          ? './assets/images/alert.svg'
+          : data.alertType === 'warn'
+            ? './assets/images/warning.png'
+            : data.alertType === 'info'
+              ? './assets/images/info.png'
+              : './assets/images/success-check.svg'
+      "
+      alt="icon"
+    />
+  </mat-icon>
+  <h1 class="dialog-message">{{ data.message }}</h1>
+  <h4 class="dialog-sub-message">{{ data?.subMessage }}</h4>
+</mat-dialog-content>
+<mat-dialog-actions align="center" class="dialog-footer">
+  <app-button
+    [label]="'Ok'"
+    [variant]="'filled'"
+    [backgroundColor]="'#2d61ac'"
+    [textColor]="'#ffffff'"
+    [mat-dialog-close]="null"
+  ></app-button>
+</mat-dialog-actions>

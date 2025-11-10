@@ -7,4 +7,7 @@ export enum Navigation {
   DoctorProfile = 'doctorprofile',
   PatientProfile = 'patientprofile',
   Dashboard = 'dashboard',
+  MedicalHistoryTimeline = 'medicalhistorytimeline',
+  EmergencyCard = 'emergencycard',
+  Reminders = 'reminders',
 }

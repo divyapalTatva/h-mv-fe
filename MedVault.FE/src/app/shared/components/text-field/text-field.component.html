@@ -1,0 +1,16 @@
+<mat-form-field
+  appearance="outline"
+  class="custom-text-field"
+  [class.readonly]="textFieldConfig?.readonly || false"
+  [floatLabel]="textFieldConfig?.readonly ? 'always' : 'never'"
+>
+  <mat-label>{{ textFieldConfig?.label }}</mat-label>
+  <textarea
+    matInput
+    [formControl]="textFieldControl"
+    [placeholder]="textFieldConfig?.placeholder"
+    [readonly]="textFieldConfig?.readonly"
+    [rows]="textFieldConfig?.rows"
+    (input)="onTextInputChange($event)"
+  ></textarea>
+</mat-form-field>

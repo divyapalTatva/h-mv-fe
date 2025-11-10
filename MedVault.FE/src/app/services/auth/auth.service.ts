@@ -21,7 +21,6 @@ export class AuthService {
   }
 
   verifyOtp(verifyOtpRequest: VerifyOtpRequest): Observable<ResponseModel<LoginResponse>> {
-    debugger;
     return this.api.post<ResponseModel<LoginResponse>>(
       API_ENDPOINTS.Auth.verifyOtp,
       verifyOtpRequest,

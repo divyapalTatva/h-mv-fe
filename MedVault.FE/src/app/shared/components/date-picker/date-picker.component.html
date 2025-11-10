@@ -1,0 +1,29 @@
+<div class="date-picker" [ngClass]="{ 'disabled-picker': disabled }">
+  <mat-form-field appearance="outline" (click)="openPicker()" [ngClass]="customClass">
+    <mat-label>{{ label }}</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      [formControl]="dateControl"
+      [placeholder]="placeHolder"
+      [readonly]="true"
+      [matDatepickerFilter]="myDateFilter"
+      (dateChange)="onSelectionChange($event)"
+      [min]="minDate"
+      [max]="maxDate"
+    />
+    <mat-hint *ngIf="needHint">Hint : {{ hintText }}</mat-hint>
+    @if (dateControl.value) {
+      <button mat-icon-button matSuffix (click)="onClear($event)">
+        <mat-icon>clear</mat-icon>
+      </button>
+    } @else {
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+        [disabled]="disabled"
+      ></mat-datepicker-toggle>
+    }
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>

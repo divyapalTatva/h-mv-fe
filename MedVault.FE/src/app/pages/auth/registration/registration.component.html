@@ -1,0 +1,84 @@
+<div class="profile-wrapper">
+  <div class="profile-box-outer">
+    <div class="profile-box">
+      <div class="welcome-text">
+        <h2 class="title">Create Account</h2>
+        <p class="description">Register now to get started with MedVault</p>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="registration()">
+        <div class="row">
+          <div class="col-6">
+            <div class="input-wrapper">
+              <app-input [config]="{
+                  key: 'firstName',
+                  label: 'First Name',
+                  type: 'text',
+                  placeholder: 'Enter first name'
+                }" [control]="firstNameControl" appOnlyAlphabet></app-input>
+              <app-error [control]="firstNameControl" [customMessageList]="firstNameValidationMessages"></app-error>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="input-wrapper">
+              <app-input [config]="{
+                  key: 'lastName',
+                  label: 'Last Name',
+                  type: 'text',
+                  placeholder: 'Enter last name'
+                }" [control]="lastNameControl" appOnlyAlphabet></app-input>
+              <app-error [control]="lastNameControl" [customMessageList]="lastNameValidationMessages"></app-error>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="input-wrapper">
+              <app-input [config]="{
+                  key: 'email',
+                  label: 'Email',
+                  type: 'email',
+                  placeholder: 'Enter email address'
+                }" [control]="emailControl"></app-input>
+              <app-error [control]="emailControl" [customMessageList]="emailValidationMessages"></app-error>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="input-wrapper">
+              <app-input [config]="{
+                  key: 'phoneNumber',
+                  label: 'Phone Number',
+                  type: 'tel',
+                  placeholder: 'Enter phone number'
+                }" [control]="phoneNumberControl" appOnlyNumbers [maxLength]="10"></app-input>
+              <app-error [control]="phoneNumberControl" [customMessageList]="phoneNumberValidationMessages"></app-error>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="input-wrapper">
+              <app-input [config]="passwordInputConfig" [control]="passwordControl"
+                (emitClickEvent)="onPasswordToggle()"></app-input>
+              <app-error [control]="passwordControl" [customMessageList]="passwordValidationMessages"></app-error>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="input-wrapper">
+              <app-input [config]="confirmPasswordInputConfig" [control]="confirmPasswordControl"
+                (emitClickEvent)="onConfirmPasswordToggle()"></app-input>
+              <app-error [control]="confirmPasswordControl"
+                [customMessageList]="confirmPasswordValidationMessages"></app-error>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <app-button label="Submit" variant="filled" [backgroundColor]="'#2d61ac'" [textColor]="'#ffffff'"
+              type="submit" [disabled]="form.invalid"></app-button>
+          </div>          
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

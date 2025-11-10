@@ -1,0 +1,13 @@
+.date-picker.disabled-picker {
+  opacity: 0.6;
+  pointer-events: none;
+
+  input,
+  mat-icon {
+    cursor: not-allowed !important;
+  }
+
+  .mat-icon {
+    color: gray;
+  }
+}

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ValidationErrors } from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { validations } from '../../../utils/validators';
 
 export interface ValidationMessages {
   [key: string]: string;
@@ -66,5 +67,25 @@ export class ValidationService {
       default:
         return 'Invalid input';
     }
+  }
+
+  whiteSpaceAndOnlySpecialCharcatersValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value || '';
+      const errors: ValidationErrors = {};
+
+      // White space only
+      if (!validations.common.whitespaceREGEX.test(value)) {
+        errors['whitespace'] = true;
+      }
+
+      // Only special characters
+      const trimmedValue = value.toLowerCase().replace(/\s/g, '');
+      if (validations.common.specialCharsREGEX.test(trimmedValue)) {
+        errors['specialChars'] = true;
+      }
+
+      return Object.keys(errors).length ? errors : null;
+    };
   }
 }

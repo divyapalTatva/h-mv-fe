@@ -18,4 +18,47 @@ export const VALIDATION_MESSAGES = {
     required: 'OTP is required',
     pattern: 'Enter a valid OTP',
   },
+  firstName: {
+    required: 'First Name is required',
+    pattern: 'Enter a valid first name',
+  },
+  lastName: {
+    required: 'Last Name is required',
+    pattern: 'Enter a valid last name',
+  },
+  phoneNumber: {
+    required: 'Phone number is required',
+    pattern: 'Enter a valid phone number',
+  },
+  dateOfBirth: {
+    required: 'Date of Birth is required.',
+  },
+  gender: {
+    required: 'Gender is required.',
+  },
+  bloodGroup: {
+    required: 'Blood Group is required.',
+  },
+  emergencyContactName: {
+    required: 'Emergency contact name is required.',
+    pattern: 'Enter a valid emergency contact name.',
+  },
+  emergencyContactNumber: {
+    required: 'Emergency contact number is required.',
+    pattern: 'Enter a valid 10-digit number.',
+  },
+  allergies: {
+    maxlength: 'Maximum 1000 characters allowed.'
+  },
+  specialization: {
+    required: 'Specialization is required.',
+    maxlength: 'Maximum 250 characters allowed.'
+  },
+  registrationNumber: {
+    required: 'Registration number is required.',
+    maxlength: 'Maximum 50 characters allowed.'
+  },
+  hospital: {
+    required: 'Hospital is required.'
+  }
 };

@@ -1,0 +1,140 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="profile-wrapper">
+        <div class="profile-box-outer">
+            <div class="profile-box">
+                <div class="welcome-text">
+                    <h2 class="title">Complete Your Profile</h2>
+                    <p class="description">Please provide the required details to continue.</p>
+                </div>
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="row">
+
+                        <!-- ===================== PATIENT FIELDS ===================== -->
+                        <ng-container *ngIf="role === UserRole.User">
+
+                            <div class="col-4">
+                                <div class="input-wrapper">
+                                    <app-date-picker [label]="'Date of Birth'" [placeHolder]="'Select date of birth'"
+                                        [dateControl]="getControl('dateOfBirth')" [disabled]="false" [needHint]="true"
+                                        [hintText]="'Format: MM/DD/YYYY'" [max]="today"
+                                        style="width: -webkit-fill-available;"></app-date-picker>
+                                    <app-error [control]="getControl('dateOfBirth')"
+                                        [customMessageList]="dateOfBirthValidationMessages"></app-error>
+                                </div>
+                            </div>
+
+                            <div class="col-4">
+                                <div class="input-wrapper">
+                                    <app-select [label]="'Gender'" [control]="getControl('gender')"
+                                        [dropdownOptions]="genderList"
+                                        style="width: -webkit-fill-available;"></app-select>
+                                    <app-error [control]="getControl('gender')"
+                                        [customMessageList]="genderValidationMessages"></app-error>
+                                </div>
+                            </div>
+
+                            <div class="col-4">
+                                <div class="input-wrapper">
+                                    <app-select [label]="'Blood Group'" [control]="getControl('bloodGroup')"
+                                        [dropdownOptions]="bloodGroupList"
+                                        style="width: -webkit-fill-available;"></app-select>
+                                    <app-error [control]="getControl('bloodGroup')"
+                                        [customMessageList]="bloodGroupValidationMessages"></app-error>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="input-wrapper">
+                                    <app-input [config]="{
+                                    key: 'emergencyContactName',
+                                    label: 'Emergency Contact Name',
+                                    type: 'text',
+                                    placeholder: 'Enter contact name'
+                                    }" [control]="getControl('emergencyContactName')" appOnlyAlphabet></app-input>
+                                    <app-error [control]="getControl('emergencyContactName')"
+                                        [customMessageList]="emergencyContactNameValidationMessages"></app-error>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="input-wrapper">
+                                    <app-input [config]="{
+                                    key: 'emergencyContactNumber',
+                                    label: 'Emergency Contact Number',
+                                    type: 'tel',
+                                    placeholder: 'Enter contact number'
+                                    }" [control]="getControl('emergencyContactNumber')" appOnlyNumbers
+                                        [maxLength]="10"></app-input>
+                                    <app-error [control]="getControl('emergencyContactNumber')"
+                                        [customMessageList]="emergencyContactNumberValidationMessages"></app-error>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="input-wrapper">
+                                    <app-text-field [textFieldConfig]="{
+                                            key: 'allergies',
+                                            label: 'Allergies',
+                                            placeholder: 'Enter allergies (optional)',
+                                            rows: 3
+                                        }" [textFieldControl]="getControl('allergies')"
+                                        style="width: -webkit-fill-available;"></app-text-field>
+                                    <app-error [control]="getControl('allergies')"
+                                        [customMessageList]="allergiesValidationMessages"></app-error>
+                                </div>
+                            </div>
+                        </ng-container>
+
+                        <!-- ===================== DOCTOR FIELDS ===================== -->
+                        <ng-container *ngIf="role === UserRole.Doctor">
+                            <div class="col-6">
+                                <div class="input-wrapper">
+                                    <app-input [config]="{
+                                    key: 'specialization',
+                                    label: 'Specialization',
+                                    type: 'text',
+                                    placeholder: 'Enter specialization'
+                                    }" [control]="getControl('specialization')" appOnlyAlphabet></app-input>
+                                    <app-error [control]="getControl('specialization')"
+                                        [customMessageList]="specializationValidationMessages"></app-error>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="input-wrapper">
+                                    <app-input [config]="{
+                                    key: 'registrationNumber',
+                                    label: 'Registration Number',
+                                    type: 'text',
+                                    placeholder: 'Enter registration number'
+                                    }" [control]="getControl('registrationNumber')"></app-input>
+                                    <app-error [control]="getControl('registrationNumber')"
+                                        [customMessageList]="registrationNumberValidationMessages"></app-error>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="input-wrapper">
+                                    <app-select [label]="'Hospital'" [control]="getControl('hospitalId')"
+                                        [dropdownOptions]="hospitalsList"
+                                        style="width: -webkit-fill-available;"></app-select>
+                                    <app-error [control]="getControl('hospitalId')"
+                                        [customMessageList]="hospitalValidationMessages"></app-error>
+                                </div>
+                            </div>
+                        </ng-container>
+
+                        <div class="col-12 button-group" style="display: flex; gap: 1rem; justify-content: center;">
+                            <app-button label="Submit" variant="filled" [backgroundColor]="'#2d61ac'"
+                                [textColor]="'#ffffff'" type="submit" [disabled]="form.invalid">
+                            </app-button>
+
+                            <app-button label="Cancel" variant="outlined" [backgroundColor]="'#ffffff'"
+                                [textColor]="'#2d61ac'" type="button" (click)="onCancel()">
+                            </app-button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

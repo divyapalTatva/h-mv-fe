@@ -1,0 +1,54 @@
+<aside class="sidebar">
+  <ul class="main-navigation">
+    <li class="nav-link" *ngFor="let route of routeConfig; let i = index">
+      <ng-container *ngIf="route?.submenu; else singleMenu">
+        <mat-accordion class="nested-navigation" [multi]="false">
+          <mat-expansion-panel
+            class="nested-navigation"
+            [expanded]="currentlyOpenAccordion === i"
+            (opened)="currentlyOpenAccordion = i"
+            (closed)="currentlyOpenAccordion = null"
+          >
+            <mat-expansion-panel-header (click)="$event.stopPropagation()">
+              <a class="nav-item" [routerLink]="route?.path" title="Reports">
+                <mat-icon class="nav-icon">
+                  <img [src]="route?.icon" [alt]="route?.title" />
+                </mat-icon>
+                {{ route?.title }}
+              </a>
+            </mat-expansion-panel-header>
+            <mat-expansion-panel hideToggle> </mat-expansion-panel>
+            <ul class="sub-menu">
+              <li *ngFor="let sub of route?.submenu">
+                <a
+                  class="nav-item"
+                  [routerLink]="sub?.path"
+                  routerLinkActive="active"
+                  [title]="sub?.title"
+                  (click)="onMenuClick()"
+                >
+                  {{ sub?.title }}
+                </a>
+              </li>
+            </ul>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </ng-container>
+      <ng-template #singleMenu>
+        <a
+          href="javascript:void(0)"
+          [routerLink]="route?.path"
+          class="nav-item"
+          routerLinkActive="active"
+          [title]="route?.title"
+          (click)="onMenuClick()"
+        >
+          <mat-icon class="nav-icon">
+            <img [src]="route?.icon" [alt]="route?.title" />
+          </mat-icon>
+          {{ route?.title }}
+        </a>
+      </ng-template>
+    </li>
+  </ul>
+</aside>
