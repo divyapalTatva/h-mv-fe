@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ResponseModel } from '../../interfaces/response/response.interface';
 import { API_ENDPOINTS } from '../../utils/api-endpoint.constant';
 import { DropdownOption } from '../../interfaces/general.interface';
+import { EmergencyResponse } from '../../interfaces/response/emergencyresponse';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,12 @@ export class UserService {
     return this.api.post<ResponseModel<number>>(
       API_ENDPOINTS.DoctorProfile.addDoctorProfile,
       doctorProfileRequest
+    );
+  }
+
+  getEmergencyDetails(): Observable<ResponseModel<EmergencyResponse>> {
+    return this.api.get<ResponseModel<EmergencyResponse>>(
+      API_ENDPOINTS.PatientProfile.getEmergencyDetails
     );
   }
 }

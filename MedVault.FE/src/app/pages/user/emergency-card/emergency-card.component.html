@@ -1,0 +1,24 @@
+<div class="emg-card">
+    <div class="emg-card__header">
+        <div class="emg-card__info">
+            <span>Emergency Contact</span>
+            <h2 class="name">{{ emergencyResponse?.emergencyContactName }}</h2>
+            <div class="meta">
+                <span>Blood Group : <strong>{{ getBloodGroupLabel(emergencyResponse?.bloodGroup) }}</strong></span>
+                <span>Date Of Birth : <strong>{{ emergencyResponse?.dateOfBirth }}</strong></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="emg-card__body">
+        <div class="field">
+            <label>Emergency Contact Number</label>
+            <div class="value">{{ emergencyResponse?.emergencyContactNumber || '—' }}</div>
+        </div>
+
+        <div class="field">
+            <label>Allergies</label>
+            <div class="value">{{ emergencyResponse?.allergies || 'None listed' }}</div>
+        </div>
+    </div>
+</div>

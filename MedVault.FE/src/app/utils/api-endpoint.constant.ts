@@ -4,7 +4,7 @@ export const API_ENDPOINTS = {
         verifyOtp: '/auth/verify-otp', //POST
     },
     User: {
-        userRegister: '/user/user-register', //POST
+        userRegister: '/user/user-register', //POST        
     },
     Hospital: {
         getHospitalsByPagination: '/hospital/get-hospitals-by-pagination', //POST
@@ -13,6 +13,7 @@ export const API_ENDPOINTS = {
     PatientProfile: {
         addPatientProfile: '/patientprofile/add', //POST
         updatePatientProfile: '/patientprofile/update', //PUT
+        getEmergencyDetails: '/patientprofile/get-emergency-details', //Get
     },
     DoctorProfile: {
         addDoctorProfile: '/doctorprofile/add', //POST
