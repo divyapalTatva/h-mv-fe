@@ -22,4 +22,11 @@ export const API_ENDPOINTS = {
     Dashboard: {
         getDashboardSummary: '/dashboard/get-dashboard-summary', //Get
     },
+    Reminder: {
+        getAllReminder: '/reminder/get-all-reminder',
+        addReminder: '/reminder/add',
+        updateReminder: '/reminder/update',
+        deleteReminder: '/reminder/delete/{0}',
+        getReminderById: '/reminder/get-reminder-by-id/{0}'
+    }
 }

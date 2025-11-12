@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>{{ reminderData.id > 0 ? 'Update Reminder' : 'Add Reminder' }}</h2>
+
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="form" (ngSubmit)="onSubmit(clickedButton)" class="reminder-form">
+    <div class="row">
+      <div class="col-4">
+        <app-date-picker [label]="'Reminder Date'" [placeHolder]="'Select reminder date'"
+          [dateControl]="getControl('reminderDate')" [disabled]="false" [minDate]="today" [needHint]="true"
+          [hintText]="'Cannot select past dates'" style="width: 100%;">
+        </app-date-picker>
+        <app-error [control]="getControl('reminderDate')"
+          [customMessageList]="reminderDateValidationMessages"></app-error>
+      </div>
+      
+      <div class="col-4">
+        <app-time-picker [label]="'Reminder Time'" [placeHolder]="'Select reminder time'"
+          [timeControl]="getControl('reminderTime')" [disabled]="false"></app-time-picker>
+        <app-error [control]="getControl('reminderTime')"
+          [customMessageList]="reminderTimeValidationMessages"></app-error>
+      </div>
+
+      <div class="col-4">
+        <app-select [label]="'Reminder Type'" [control]="getControl('reminderType')"
+          [dropdownOptions]="reminderTypeList" style="width: -webkit-fill-available;"></app-select>
+        <app-error [control]="getControl('reminderType')"
+          [customMessageList]="reminderTypeValidationMessages"></app-error>
+      </div>
+
+      <div class="col-12">
+        <app-text-field [textFieldConfig]="{
+            key: 'description',
+            label: 'Description',
+            placeholder: 'Enter reminder description',
+            rows: 3
+          }" [textFieldControl]="getControl('description')">
+        </app-text-field>
+        <app-error [control]="getControl('description')"
+          [customMessageList]="descriptionValidationMessages"></app-error>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <app-button label="Save" variant="filled" [backgroundColor]="'#2d61ac'" [textColor]="'#ffffff'" type="submit"
+        [disabled]="form.invalid" (click)="clickedButton = 'save'">
+      </app-button>
+      <app-button label="Cancel" variant="outlined" [backgroundColor]="'#ffffff'" [textColor]="'#2d61ac'" type="button"
+        (click)="clickedButton = 'cancel'">
+      </app-button>
+    </div>
+  </form>
+</mat-dialog-content>

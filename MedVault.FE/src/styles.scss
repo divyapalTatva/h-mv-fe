@@ -218,7 +218,7 @@
           .mat-expansion-panel-body {
             padding: 0 0 5px;
 
-            ul li > .nav-item {
+            ul li>.nav-item {
               padding: 6.5px 20px 6.5px 28px;
               font-size: 14px;
               line-height: 20px;
@@ -262,6 +262,7 @@
 .wrapper {
   min-height: 100dvh;
   background: #f7f8fd;
+  background-color: #E1E4E8;
 
   .layout-sidenav-container.mat-drawer-container {
     padding: 80px 0 0;
@@ -337,7 +338,7 @@
       margin-bottom: 6px;
     }
 
-    .mat-mdc-button-base + .mat-mdc-button-base {
+    .mat-mdc-button-base+.mat-mdc-button-base {
       margin: 6px 0 6px 12px;
     }
 
@@ -778,7 +779,7 @@
         background-color: #838898;
       }
 
-      + li {
+      +li {
         margin-top: 6px;
       }
 
@@ -918,7 +919,7 @@
 
 // cards
 .qa-card-listing {
-  li + li {
+  li+li {
     margin-top: 12px;
   }
 }
@@ -1137,44 +1138,26 @@
     margin: 0 12px;
   }
 
-  .mdc-checkbox .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background,
-  .mdc-checkbox .mdc-checkbox__native-control:enabled:indeterminate ~ .mdc-checkbox__background,
-  .mdc-checkbox
-    .mdc-checkbox__native-control[data-indeterminate='true']:enabled
-    ~ .mdc-checkbox__background,
-  .mdc-checkbox .mdc-checkbox__native-control:enabled:focus:checked ~ .mdc-checkbox__background,
-  .mdc-checkbox
-    .mdc-checkbox__native-control:enabled:focus:indeterminate
-    ~ .mdc-checkbox__background,
-  .mdc-checkbox:not(:disabled):active
-    .mdc-checkbox__native-control:enabled:checked
-    ~ .mdc-checkbox__background,
-  .mdc-checkbox:hover .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background,
-  .mdc-checkbox:hover
-    .mdc-checkbox__native-control:enabled:indeterminate
-    ~ .mdc-checkbox__background,
-  .mdc-checkbox:hover
-    .mdc-checkbox__native-control[data-indeterminate='true']:enabled
-    ~ .mdc-checkbox__background {
+  .mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background,
+  .mdc-checkbox .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background,
+  .mdc-checkbox .mdc-checkbox__native-control[data-indeterminate='true']:enabled~.mdc-checkbox__background,
+  .mdc-checkbox .mdc-checkbox__native-control:enabled:focus:checked~.mdc-checkbox__background,
+  .mdc-checkbox .mdc-checkbox__native-control:enabled:focus:indeterminate~.mdc-checkbox__background,
+  .mdc-checkbox:not(:disabled):active .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background,
+  .mdc-checkbox:hover .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background,
+  .mdc-checkbox:hover .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background,
+  .mdc-checkbox:hover .mdc-checkbox__native-control[data-indeterminate='true']:enabled~.mdc-checkbox__background {
     border-color: #46a746;
     background-color: #46a746;
   }
 
-  .mdc-checkbox .mdc-checkbox__native-control:focus:checked ~ .mdc-checkbox__ripple,
-  .mdc-checkbox .mdc-checkbox__native-control:focus ~ .mdc-checkbox__ripple {
+  .mdc-checkbox .mdc-checkbox__native-control:focus:checked~.mdc-checkbox__ripple,
+  .mdc-checkbox .mdc-checkbox__native-control:focus~.mdc-checkbox__ripple {
     background-color: #46a746;
   }
 
-  .mat-mdc-checkbox
-    .mdc-checkbox:hover
-    .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not(
-      [data-indeterminate='true']
-    )
-    ~ .mdc-checkbox__background,
-  .mat-mdc-checkbox
-    .mdc-checkbox
-    .mdc-checkbox__native-control:enabled:focus:focus:not(:checked):not(:indeterminate)
-    ~ .mdc-checkbox__background {
+  .mat-mdc-checkbox .mdc-checkbox:hover .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate='true'])~.mdc-checkbox__background,
+  .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:focus:focus:not(:checked):not(:indeterminate)~.mdc-checkbox__background {
     border-color: #46a746;
   }
 
@@ -2086,4 +2069,15 @@
 .mat-calendar-body-disabled span {
   cursor: default;
   color: lightgrey !important;
+}
+
+/* Make ngx-material-timepicker overlay appear above mat-dialog */
+.timepicker-overlay {
+  z-index: 2000 !important;
+  /* higher than mat-dialog (which is ~1001) */
+}
+
+.timepicker-backdrop-overlay {
+  z-index: 1999 !important;
+  /* slightly below overlay */
 }

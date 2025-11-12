@@ -50,7 +50,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let reminder of summaryData.upcomingReminders">
-              <td>{{ getReminderTypeLabel(reminder.typeId) }}</td>
+              <td>{{ ReminderType[reminder.typeId] }}</td>
               <td>{{ reminder.description || '—' }}</td>
               <td>{{ reminder.reminderDateTime | date: 'medium' }}</td>
             </tr>

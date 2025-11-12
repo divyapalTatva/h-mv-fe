@@ -2,12 +2,28 @@ import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core
 import { SharedMaterialModule } from '../../shared-material-module';
 import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { MatDatepicker, MatDatepickerInputEvent } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepicker, MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule, NativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-date-picker',
-  imports: [SharedMaterialModule, CommonModule, MatNativeDateModule, ReactiveFormsModule],
+  imports: [SharedMaterialModule, CommonModule, ReactiveFormsModule, MatDatepickerModule,
+    MatNativeDateModule,
+  ],
+  providers: [
+    { provide: DateAdapter, useClass: NativeDateAdapter },
+    {
+      provide: MAT_DATE_FORMATS, useValue: {
+        parse: { dateInput: 'l, LLLL d, y' },
+        display: {
+          dateInput: 'MM/dd/yyyy',
+          monthYearLabel: 'MMM yyyy',
+          dateA11yLabel: 'LL',
+          monthYearA11yLabel: 'MMMM yyyy',
+        },
+      }
+    },
+  ],
   templateUrl: './date-picker.component.html',
   styleUrl: './date-picker.component.scss'
 })

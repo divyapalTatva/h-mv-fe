@@ -74,6 +74,11 @@ const userRoutes: Routes = [
         loadComponent: () =>
           import('./pages/user/emergency-card/emergency-card.component').then((m) => m.EmergencyCardComponent),
       },
+      {
+        path: Navigation.Reminders,
+        loadComponent: () =>
+          import('./pages/user/reminder/reminder.component').then((m) => m.ReminderComponent),
+      },
       // more admin routes
     ],
   },

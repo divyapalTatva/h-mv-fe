@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   public role!: UserRole;
   UserRole = UserRole;
+  ReminderType = ReminderType;
   summaryData: any = {};
 
   ngOnInit(): void {
@@ -36,16 +37,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
-  }
-
-  getReminderTypeLabel(typeId: ReminderType): string {
-    const map: Record<number, string> = {
-      1: 'Checkup',
-      2: 'Medication',
-      3: 'Follow-up',
-      4: 'Other'
-    };
-    return map[typeId] || 'Unknown';
   }
 
   loadDashboardData(): void {

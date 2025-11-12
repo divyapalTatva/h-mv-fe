@@ -1,0 +1,26 @@
+<div class="time-picker" [ngClass]="{ 'disabled-picker': disabled }">
+  <mat-form-field appearance="outline" (click)="onOpenTimePicker()">
+    <mat-label>{{ label }}</mat-label>
+    <input
+      [type]="type"
+      matInput
+      [ngxTimepicker]="toggleTimepicker"
+      [formControl]="timeControl"
+      [placeholder]="placeHolder"
+      [max]="maxTime"
+      [min]="minTime"
+      (focus)="preventFocus($event)"
+      [format]="12"
+      [readonly]="true"
+      [matTooltip]="tooltipText"
+      #timePickerInput
+    />
+    <mat-icon matSuffix>access_time</mat-icon>
+
+    <ngx-material-timepicker
+      #toggleTimepicker
+      (closed)="onTimePickerClosed()"
+      [theme]="theme"
+    ></ngx-material-timepicker>
+  </mat-form-field>
+</div>

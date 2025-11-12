@@ -60,5 +60,18 @@ export const VALIDATION_MESSAGES = {
   },
   hospital: {
     required: 'Hospital is required.'
+  },
+  descriptionValidationMessages: {
+    required: 'Description is required.',
+    maxlength: 'Description cannot exceed 250 characters.'
+  },
+  reminderTypeValidationMessages: {
+    required: 'Reminder Type is required.',
+  },
+  reminderDateValidationMessages: {
+    required: 'Reminder date is required.',
+  },
+  reminderTimeValidationMessages: {
+    required: 'Reminder Time is required'
   }
 };

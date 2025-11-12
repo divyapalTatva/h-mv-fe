@@ -1623,12 +1623,12 @@ ngx-material-timepicker-container {
 // login
 .login-wrapper {
   position: relative;
-  background: #ffffff;
   padding: 30px 0;
   min-height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
+  background-color: #D8DFE3;
 
   &::before {
     content: '';
@@ -1708,12 +1708,12 @@ ngx-material-timepicker-container {
 
 .profile-wrapper {
   position: relative;
-  background: #ffffff;
   padding: 40px 0;
   min-height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
+  background-color: #D8DFE3;
 
   &::before {
     content: '';
