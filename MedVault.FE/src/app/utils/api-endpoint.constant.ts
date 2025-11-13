@@ -18,6 +18,7 @@ export const API_ENDPOINTS = {
     DoctorProfile: {
         addDoctorProfile: '/doctorprofile/add', //POST
         updateDoctorProfile: '/doctorprofile/update', //PUT
+        getDoctorsForDropdown: '/doctorprofile/get-all-doctors', //Get
     },
     Dashboard: {
         getDashboardSummary: '/dashboard/get-dashboard-summary', //Get
@@ -28,5 +29,9 @@ export const API_ENDPOINTS = {
         updateReminder: '/reminder/update',
         deleteReminder: '/reminder/delete/{0}',
         getReminderById: '/reminder/get-reminder-by-id/{0}'
-    }
+    },
+    PatientHistory: {
+        getAllPatientHistory: '/patienthistory/get-patient-history-by-pagination', //Get
+        getAllCategoryType: '/patienthistory/get-all-category-type', //Get        
+    },
 }

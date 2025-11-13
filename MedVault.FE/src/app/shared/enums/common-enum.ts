@@ -1,5 +1,3 @@
-import { DropdownOption } from "../../interfaces/general.interface";
-
 export enum UserRole {
     Admin = 1,
     Doctor = 2,
@@ -39,3 +37,8 @@ export const BLOOD_GROUP_LABELS: Record<BloodGroup, string> = {
     [BloodGroup.ABPositive]: 'AB+',
     [BloodGroup.ABNegative]: 'AB-',
 };
+
+export enum SORT_ORDER {
+  ASCENDING = 'ascending',
+  DESCENDING = 'descending',
+}

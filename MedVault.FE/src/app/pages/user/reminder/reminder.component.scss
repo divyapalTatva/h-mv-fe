@@ -1,5 +1,4 @@
 .reminder-calendar-container {
-  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -10,7 +9,7 @@
     align-items: center;
     padding: 1rem 1.5rem;
     border-radius: 12px;
-    background: linear-gradient(135deg, #2563eb, #1e3a8a);
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
     color: white;
     box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
 
@@ -47,7 +46,7 @@
   }
 
   ::ng-deep .fc-event {
-    background-color: #2563eb !important;
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
     border: none !important;
     border-radius: 6px;
     padding: 4px 6px;

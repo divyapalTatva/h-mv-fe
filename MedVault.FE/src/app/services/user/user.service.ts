@@ -45,4 +45,10 @@ export class UserService {
       API_ENDPOINTS.PatientProfile.getEmergencyDetails
     );
   }
+
+  getDoctorsForDropdown(): Observable<ResponseModel<DropdownOption[]>> {
+    return this.api.get<ResponseModel<DropdownOption[]>>(
+      API_ENDPOINTS.DoctorProfile.getDoctorsForDropdown
+    );
+  }
 }

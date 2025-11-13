@@ -70,6 +70,11 @@ const userRoutes: Routes = [
           import('./pages/user/dashboard/dashboard.component').then((m) => m.DashboardComponent),
       },
       {
+        path: Navigation.MedicalHistoryTimeline,
+        loadComponent: () =>
+          import('./pages/user/timelineview/timelineview.component').then((m) => m.TimelineviewComponent),
+      },
+      {
         path: Navigation.EmergencyCard,
         loadComponent: () =>
           import('./pages/user/emergency-card/emergency-card.component').then((m) => m.EmergencyCardComponent),
