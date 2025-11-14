@@ -24,14 +24,17 @@ export const API_ENDPOINTS = {
         getDashboardSummary: '/dashboard/get-dashboard-summary', //Get
     },
     Reminder: {
-        getAllReminder: '/reminder/get-all-reminder',
-        addReminder: '/reminder/add',
-        updateReminder: '/reminder/update',
-        deleteReminder: '/reminder/delete/{0}',
-        getReminderById: '/reminder/get-reminder-by-id/{0}'
+        getAllReminder: '/reminder/get-all-reminder',//Get
+        addReminder: '/reminder/add',//POST
+        updateReminder: '/reminder/update',//PUT
+        deleteReminder: '/reminder/delete/{0}', //DELETE
+        getReminderById: '/reminder/get-reminder-by-id/{0}' //Get
     },
     PatientHistory: {
         getAllPatientHistory: '/patienthistory/get-patient-history-by-pagination', //Get
-        getAllCategoryType: '/patienthistory/get-all-category-type', //Get        
+        getAllCategoryType: '/patienthistory/get-all-category-type', //Get
+        getPatientHistoryById: '/patienthistory/get-patienthistory-by-id/{0}',  //Get
+        savePatientHistory: '/patienthistory/save',  //POST 
+        getDocumentFile : '/patienthistory/download', //Get
     },
 }

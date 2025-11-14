@@ -1,13 +1,13 @@
 export interface PatientHistoryResponse {
-  doctorName: string;
+  id: number;
+  doctorId: number;
   title: string;
-  description?: string | null;
-  createdAt: Date;
-  patientHistoryDocuments: PatientHistoryDocuments[];
+  description?: string;
+  patientHistoryDocuments: PatientHistoryDocumentsResponse[];
 }
 
-export interface PatientHistoryDocuments {
-  documentCategoryName: string;
-  dateOfDocument: Date;
+export interface PatientHistoryDocumentsResponse {
+  documentCategoryTypeId: number;
+  dateOfDocument: string;   // ISO date string from API
   filePath: string;
 }

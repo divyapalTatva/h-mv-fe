@@ -1,5 +1,4 @@
 import { Component, HostListener, inject } from '@angular/core';
-import { PatientHistoryRequest } from '../../../interfaces/request/patienthistoryrequest';
 import { SORT_ORDER } from '../../../shared/enums/common-enum';
 import { TimelineService } from '../../../services/timeline/timeline.service';
 import { Subject, takeUntil } from 'rxjs';
@@ -9,11 +8,14 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { SharedMaterialModule } from '../../../shared/shared-material-module';
 import { DatePickerComponent } from "../../../shared/components/date-picker/date-picker.component";
 import { SelectComponent } from '../../../shared/components/select/select.component';
-import { PatientHistoryResponse } from '../../../interfaces/response/patienthistoryresponse';
 import { DropdownOption } from '../../../interfaces/general.interface';
 import { SnackbarService } from '../../../shared/services/snackbar/snackbar.service';
 import { UserService } from '../../../services/user/user.service';
 import { ButtonComponent } from "../../../shared/components/button/button.component";
+import { AddpatienthistoryComponent } from './addpatienthistory/addpatienthistory.component';
+import { MatDialog } from '@angular/material/dialog';
+import { PatientHistoryListResponse } from '../../../interfaces/response/patienthistorylistresponse';
+import { PatientHistoryListRequest } from '../../../interfaces/request/patienthistorylistrequest';
 
 @Component({
   selector: 'app-timelineview',
@@ -23,7 +25,7 @@ import { ButtonComponent } from "../../../shared/components/button/button.compon
     SharedMaterialModule,
     DatePickerComponent,
     SelectComponent,
-    ButtonComponent
+    ButtonComponent,
   ],
   templateUrl: './timelineview.component.html',
   styleUrl: './timelineview.component.scss'
@@ -32,6 +34,7 @@ export class TimelineviewComponent {
   private readonly timelineService = inject(TimelineService);
   private readonly snackbarService = inject(SnackbarService);
   private readonly userService = inject(UserService);
+  private readonly dialog = inject(MatDialog);
   private readonly destroy$ = new Subject<void>();
 
   // Filters
@@ -45,7 +48,7 @@ export class TimelineviewComponent {
   isLoading = false;
   isEndOfList = false;
   today = new Date();
-  patientHistoryList: PatientHistoryResponse[] = [];
+  patientHistoryList: PatientHistoryListResponse[] = [];
   categoryTypeList: DropdownOption[] = [];
   doctorsList: DropdownOption[] = [];
 
@@ -70,7 +73,7 @@ export class TimelineviewComponent {
       this.isEndOfList = false;
     }
 
-    const requestPayload: PatientHistoryRequest = {
+    const requestPayload: PatientHistoryListRequest = {
       searchQuery: '',
       pageIndex: this.pageIndex,
       pageSize: this.pageSize,
@@ -80,7 +83,7 @@ export class TimelineviewComponent {
       categoryType: this.categoryTypeControl.value,
       docotorId: this.doctorControl.value,
     };
-    
+
     this.isLoading = true;
 
     this.timelineService
@@ -179,5 +182,33 @@ export class TimelineviewComponent {
     return `${year}-${month}-${day}`; // send only date string
   }
 
+  savePatientHistoryiDialog(id: number): void {
+    const dialogRef = this.dialog.open(AddpatienthistoryComponent, {
+      width: '1000px',
+      data: { id },
+      disableClose: true,
+      autoFocus: false,
+      panelClass: ['primary-dialog'],
+    });
 
+    dialogRef
+      .afterClosed()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((result: any) => {
+        if (result) this.fetchPatientHistory(true);
+      });
+  }
+
+  downloadFile(doc: any): void {
+    this.timelineService.getDocumentFile(doc.filePath).subscribe((fileBlob) => {
+
+      const blob = new Blob([fileBlob], { type: fileBlob.type });
+
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = doc.fileName || 'attachment';
+      link.click();
+      URL.revokeObjectURL(link.href);
+    });
+  }
 }

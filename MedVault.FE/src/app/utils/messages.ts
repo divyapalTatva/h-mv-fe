@@ -73,5 +73,15 @@ export const VALIDATION_MESSAGES = {
   },
   reminderTimeValidationMessages: {
     required: 'Reminder Time is required'
-  }
+  },
+  dateOfDocumentValidationMessages: {
+    required: 'Date of document is required.',
+  },
+  doctorValidationMessages: {
+    required: 'Doctor is required.',
+  },
+  titleValidationMessages: {
+    required: 'Title is required.',
+    pattern: 'Enter a valid title.',
+  },
 };

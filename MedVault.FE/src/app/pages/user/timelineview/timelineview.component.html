@@ -1,7 +1,5 @@
 <div class="timeline-container">
-
     <h2 class="section-title">Medical Timeline</h2>
-    <!-- 🔹 Sticky Filter Section -->
     <mat-card class="filter-section mat-elevation-z4">
         <div class="filter-grid">
             <app-date-picker [label]="'Date'" [placeHolder]="'Select date'" [dateControl]="createdDateControl"
@@ -18,11 +16,13 @@
             <div class="clear-filter-btn">
                 <app-button [label]="'Clear'" [textColor]="'#2d61ac'" [variant]="'outlined'"
                     (buttonClickEvent)="clearFilters()"></app-button>
+
+                <app-button [label]="'Add Patient History'" [textColor]="'#ffffff'" [variant]="'filled'"
+                    (buttonClickEvent)="savePatientHistoryiDialog(0)"></app-button>
             </div>
         </div>
     </mat-card>
 
-    <!-- 🔹 Timeline -->
     <div class="timeline">
         <div *ngFor="let item of patientHistoryList; let i = index" class="timeline-event">
             <div class="timeline-dot"></div>
@@ -31,7 +31,13 @@
             <mat-card class="timeline-card mat-elevation-z3">
                 <div class="timeline-header">
                     <h3>{{ item.title }}</h3>
-                    <span class="timeline-date">{{ item.createdAt | date:'mediumDate'}}</span>
+                    <div class="header-right">
+                        <span class="timeline-date">{{ item.createdAt | date:'mediumDate' }}</span>
+
+                        <button mat-icon-button class="edit-btn" (click)="savePatientHistoryiDialog(item.id)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="timeline-body">
@@ -41,7 +47,8 @@
                     <div *ngIf="item.patientHistoryDocuments?.length > 0" class="attachments">
                         <p><strong>Attachments:</strong></p>
                         <div class="attachment-list">
-                            <div *ngFor="let doc of item.patientHistoryDocuments" class="attachment-item">
+                            <div *ngFor="let doc of item.patientHistoryDocuments" class="attachment-item"
+                                (click)="downloadFile(doc)">
                                 <mat-icon>attach_file</mat-icon>
                                 <span>{{ doc.documentCategoryName }}</span>
                                 <span class="timeline-date">{{ doc.dateOfDocument | date:'mediumDate' }}</span>
@@ -52,16 +59,13 @@
             </mat-card>
         </div>
 
-        <!-- Loader -->
         <div *ngIf="isLoading" class="loader">
             <mat-progress-spinner diameter="40" mode="indeterminate"></mat-progress-spinner>
         </div>
 
-        <!-- No Data -->
         <div *ngIf="!isLoading && patientHistoryList.length === 0" class="timeline-card mat-elevation-z3 no-data">
             <mat-icon>history</mat-icon>
             <p>No patient history found</p>
         </div>
-
     </div>
 </div>

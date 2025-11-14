@@ -1,4 +1,8 @@
-<h2 mat-dialog-title>{{ reminderData.id > 0 ? 'Update Reminder' : 'Add Reminder' }}</h2>
+<h2 mat-dialog-title>{{ reminderData.id > 0 ? 'Update Reminder' : 'Add Reminder' }}
+    <button mat-icon-button mat-dialog-close class="close-btn" aria-label="Close">
+    <mat-icon>close</mat-icon>
+  </button>
+</h2>
 
 <mat-dialog-content class="mat-typography">
   <form [formGroup]="form" (ngSubmit)="onSubmit(clickedButton)" class="reminder-form">

@@ -1,0 +1,89 @@
+<h2 mat-dialog-title>
+  {{ data?.id > 0 ? 'Update Patient History' : 'Add Patient History' }}
+  <button mat-icon-button mat-dialog-close class="close-btn" aria-label="Close">
+    <mat-icon>close</mat-icon>
+  </button>
+</h2>
+
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="form" (ngSubmit)="onSubmit(clickedButton)" class="patient-history-form">
+    <div class="row">
+      <div class="col-6">
+        <app-select [label]="'Doctor'" [control]="getControl('doctorId')" [dropdownOptions]="doctorsList"
+          style="width: 100%;"></app-select>
+        <app-error [control]="getControl('doctorId')" [customMessageList]="doctorValidationMessages"></app-error>
+      </div>
+      <div class="col-6">
+        <app-input [config]="{
+                  key: 'title',
+                  label: 'Title',
+                  type: 'text',
+                  placeholder: 'Enter history title'
+                }" [control]="getControl('title')" appOnlyAlphabet></app-input>
+        <app-error [control]="getControl('title')" [customMessageList]="titleValidationMessages"></app-error>
+      </div>
+      <div class="col-12">
+        <app-text-field [textFieldConfig]="{
+            key: 'description',
+            label: 'Description',
+            placeholder: 'Enter patient history description',
+            rows: 3
+          }" [textFieldControl]="getControl('description')">
+        </app-text-field>
+      </div>
+    </div>
+
+    <!-- Document List Section -->
+    <div class="form-field full-width">
+      <h3 class="section-title">Medical Documents</h3>
+
+      <div formArrayName="medicalDocuments" class="documents-container">
+        <div *ngFor="let doc of medicalDocuments.controls; let i = index" [formGroupName]="i" class="document-item">
+          <div class="row">
+            <div class="col-4">
+              <app-select [label]="'Category Type'" [control]="doc.get('documentCategoryId')"
+                [dropdownOptions]="documentCategoryList">
+              </app-select>
+              <app-error [control]="doc.get('documentCategoryId')"
+                [customMessageList]="documentCategoryTypeValidationMessages"></app-error>
+            </div>
+            <div class="col-3">
+              <app-date-picker [label]="'Date of Document'" [dateControl]="doc.get('dateOfDocument')" [disabled]="false"
+                style="width: 100%;">
+              </app-date-picker>
+              <app-error [control]="doc.get('dateOfDocument')"
+                [customMessageList]="dateOfDocumentValidationMessages"></app-error>
+            </div>
+            <div class="col-4">
+              <app-file-upload [label]="'Upload File'" [allowedExtensions]="allowedFileExtensions"
+                (fileSelected)="onFileSelected($event, i)">
+              </app-file-upload>
+              <div *ngIf="doc.get('existingFileName')?.value">
+                <a [href]="doc.get('existingFileUrl')?.value" target="_blank">
+                  {{ doc.get('existingFileName')?.value }}
+                </a>
+              </div>
+            </div>
+            <div class="col-1">
+              <button mat-icon-button color="warn" (click)="removeDocument(i)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <button mat-stroked-button color="primary" class="add-btn" (click)="addDocument()">
+          <mat-icon>add</mat-icon> Add Document
+        </button>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <app-button mat-flat-button label="Save" variant="filled" [backgroundColor]="'#2d61ac'" [textColor]="'#ffffff'"
+        type="submit" [disabled]="form.invalid" (click)="clickedButton = 'save'">
+      </app-button>
+      <app-button mat-stroked-button label="Cancel" variant="outlined" [backgroundColor]="'#ffffff'"
+        [textColor]="'#2d61ac'" type="button" (click)="clickedButton = 'cancel'"></app-button>
+    </div>
+  </form>
+</mat-dialog-content>

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient) { }
 
   private buildHeaders(showLoader: boolean): HttpHeaders {
     let headers = new HttpHeaders();
@@ -39,4 +39,14 @@ export class ApiService {
     const headers = this.buildHeaders(showLoader);
     return this.http.patch<T>(url, body, { headers });
   }
+
+  downloadFile(url: string, showLoader: boolean = true) : Observable<Blob> {
+    const headers = this.buildHeaders(showLoader);
+
+    return this.http.get(url, {
+      headers,
+      responseType: 'blob' as 'blob' // IMPORTANT
+    });
+  }
+
 }
