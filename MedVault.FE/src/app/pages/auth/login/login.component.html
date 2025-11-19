@@ -32,31 +32,43 @@
                         </div>
                     </form>
                     <div class="col-12 mt-5 login-links">
-                        <p>
-                            Don't have an account?
-                            <app-link-button label="Register Now!" [textColor]="'#4875b7'"
-                                (buttonClickEvent)="navigateToRegister()">
-                            </app-link-button>
-                        </p>
+                        <div *ngIf="role === UserRole.User">
+                            <p>
+                                Don't have an account?
+                                <app-link-button label="Register Now!" [textColor]="'#4875b7'"
+                                    (buttonClickEvent)="navigateToRegister(UserRole.User)">
+                                </app-link-button>
+                            </p>
 
-                        <p *ngIf="role === UserRole.User">
-                            If you want to login as doctor?
-                            <app-link-button label="Login as Doctor!" [textColor]="'#4875b7'"
-                                (buttonClickEvent)="navigateToDoctorLogin()">
-                            </app-link-button>
-                        </p>
+                            <p>
+                                If you want to login as doctor?
+                                <app-link-button label="Login as Doctor!" [textColor]="'#4875b7'"
+                                    (buttonClickEvent)="navigateToDoctorLogin()">
+                                </app-link-button>
+                            </p>
+                        </div>
+                        <div *ngIf="role === UserRole.Doctor">
+                            <p>
+                                Don't have an doctor account?
+                                <app-link-button label="Register Now!" [textColor]="'#4875b7'"
+                                    (buttonClickEvent)="navigateToRegister(UserRole.Doctor)">
+                                </app-link-button>
+                            </p>
 
-                        <p *ngIf="role === UserRole.Doctor">
-                            If you want to login as patient?
-                            <app-link-button label="Login as Patient!" [textColor]="'#4875b7'"
-                                (buttonClickEvent)="navigateToPatientLogin()">
-                            </app-link-button>
-                        </p>
+                            <p>
+                                If you want to login as patient?
+                                <app-link-button label="Login as Patient!" [textColor]="'#4875b7'"
+                                    (buttonClickEvent)="navigateToPatientLogin()">
+                                </app-link-button>
+                            </p>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
             <!-- OTP Verification -->
-            <app-verify-otp *ngIf="showOtpScreen" [userID]="otpUserId" [userRole]="userRole"
+            <app-verify-otp *ngIf="showOtpScreen" [userID]="otpUserId" [userRole]="role"
                 (otpVerified)="onOtpVerified($event)">
             </app-verify-otp>
         </div>

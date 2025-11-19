@@ -28,6 +28,12 @@ const authRoutes: Routes = [
     loadComponent: () =>
       import('./pages/auth/registration/registration.component').then((m) => m.RegistrationComponent)
   },
+  {
+    path: `${Navigation.Doctor}/${Navigation.Register}`,
+    data: { userRole: UserRole.Doctor },
+    loadComponent: () =>
+      import('./pages/auth/registration/registration.component').then((m) => m.RegistrationComponent)
+  },
 ];
 
 const doctorRoutes: Routes = [

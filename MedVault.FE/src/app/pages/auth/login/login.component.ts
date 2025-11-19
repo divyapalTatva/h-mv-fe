@@ -147,8 +147,12 @@ export class LoginComponent implements OnInit, OnDestroy {
       });
   }
 
-  navigateToRegister() {
-    this.router.navigate([Navigation.Register]);
+  navigateToRegister(role : UserRole) {
+    if (role === UserRole.User) {
+      this.router.navigate([Navigation.Register]);
+    } else if (role === UserRole.Doctor) {
+      this.router.navigate([`${Navigation.Doctor}/${Navigation.Register}`]);
+    }
   }
 
   navigateToPatientLogin() {

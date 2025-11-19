@@ -25,11 +25,6 @@ export const MENU_CONFIG = {
       path: `${Navigation.Dashboard}`,
       icon: './assets/images/dashboard-grey.svg',
     },
-    {
-      title: 'Appointments',
-      path: '/doctor/appointments',
-      icon: './assets/images/appointments.svg',
-    },
   ],
   [UserRole.User]: [
     {

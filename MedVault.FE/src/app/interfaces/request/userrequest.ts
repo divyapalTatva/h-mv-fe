@@ -1,4 +1,4 @@
-import { BloodGroup, Gender } from "../../shared/enums/common-enum";
+import { BloodGroup, Gender, UserRole } from "../../shared/enums/common-enum";
 
 export interface UserRequest {
     firstName: string;
@@ -6,6 +6,7 @@ export interface UserRequest {
     email: string;
     phoneNumber: number;
     password: string;
+    role: UserRole;
 }
 
 

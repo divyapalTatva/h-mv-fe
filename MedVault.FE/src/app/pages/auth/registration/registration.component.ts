@@ -12,9 +12,10 @@ import { UserRequest } from '../../../interfaces/request/userrequest';
 import { Subject, takeUntil } from 'rxjs';
 import { ResponseModel } from '../../../interfaces/response/response.interface';
 import { Navigation } from '../../../shared/enums/navigation.enum';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SnackbarService } from '../../../shared/services/snackbar/snackbar.service';
 import { OnlyNumbersDirective } from '../../../shared/directives/only-number.directive';
+import { UserRole } from '../../../shared/enums/common-enum';
 
 @Component({
   selector: 'app-registration',
@@ -34,10 +35,12 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   public readonly validation = inject(ValidationService);
   private readonly userService = inject(UserService);
   private readonly snackbarService = inject(SnackbarService);
+  private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly destroy$ = new Subject<void>();
 
   public form: FormGroup;
+  public role!: UserRole;
 
   passwordInputConfig: InputConfig = {
     key: 'password',
@@ -151,7 +154,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnInit() : void {
+  ngOnInit(): void {
+    this.role = this.route.snapshot.data['userRole'] ?? UserRole.User;
   }
 
   ngOnDestroy(): void {
@@ -210,7 +214,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       lastName: payload.lastName,
       email: payload.email,
       phoneNumber: payload.phoneNumber,
-      password: payload.password
+      password: payload.password,
+      role: this.role
     };
 
     this.userService
@@ -219,7 +224,11 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       .subscribe((response: ResponseModel<string>) => {
         if (response.result && (response.data && response.data.trim() !== '')) {
           this.snackbarService.success(response.messages);
-          this.router.navigate([Navigation.Login]);
+          if (this.role === UserRole.User) {
+            this.navigateToPatientLogin();
+          } else if (this.role === UserRole.Doctor) {
+            this.navigateToDoctorLogin();
+          }
         }
         else {
           this.snackbarService.error(response.messages);
@@ -227,4 +236,11 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       });
   }
 
+  navigateToPatientLogin() {
+    this.router.navigate([Navigation.Login]);
+  }
+
+  navigateToDoctorLogin() {
+    this.router.navigate([`${Navigation.Doctor}/${Navigation.Login}`]);
+  }
 }
